@@ -73,25 +73,25 @@ export default function Home() {
  });
  gsap.ticker.lagSmoothing(0);
  // Hero Animations
- gsap.from(".hero-headline", { y: 50, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2 });
- gsap.from(".hero-sub", { y: 30, opacity: 0, duration: 1, ease: "power3.out", delay: 0.4 });
- gsap.from(".hero-ctas", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out", delay: 0.6 });
- gsap.from(".hero-ticker", { y: 100, opacity: 0, duration: 1, ease: "power3.out", delay: 0.8 });
- // Scroll Animations for Sections
- const animateSections = gsap.utils.toArray('.benefit-card, .market-card, .kpi-card, .support-item, .testimonial-card');
- animateSections.forEach((el: any) => {
- gsap.from(el, {
- scrollTrigger: {
- trigger: el,
- start: "top 85%",
- toggleActions: "play none none none"
- },
- y: 40,
- opacity: 0,
- duration: 0.8,
- ease: "power3.out"
- });
- });
+  gsap.from(".hero-headline", { y: 50, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2 });
+  gsap.from(".hero-sub", { y: 30, opacity: 0, duration: 1, ease: "power3.out", delay: 0.4 });
+  gsap.from(".hero-ctas", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out", delay: 0.6 });
+  gsap.from(".hero-ticker", { y: 100, opacity: 0, duration: 1, ease: "power3.out", delay: 0.8 });
+  // Scroll Animations for Sections
+  const animateSections = gsap.utils.toArray('.ben-card, .mkt-card, .glow-card, .cmp-table-card, .roadmap-vertical-item');
+  animateSections.forEach((el: any) => {
+    gsap.from(el, {
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+        toggleActions: "play none none none"
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    });
+  });
 
  gsap.to(".cta-bg-glow", {
  scrollTrigger: {
@@ -146,7 +146,7 @@ export default function Home() {
  +1.000 unidades. +6 milhões de pacientes. Modelo testado em 35 anos de mercado.
  Retorno do investimento a partir do 18º mês.
         </p>
-        <div className="animate-in delay-4 max-w-lg mt-6">
+        <div className="animate-in delay-4 max-w-lg mt-6 hero-ctas">
           <CtaFunnel />
         </div>
  </div>
