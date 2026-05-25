@@ -46,6 +46,12 @@ export default function Home() {
   type VideoKey = keyof typeof videos;
   const [activeVideo, setActiveVideo] = useState<VideoKey>('fundador');
   const [isPlaying, setIsPlaying] = useState(false);
+  const [activeFaq, setActiveFaq] = useState<number | null>(0);
+
+  const toggleFaq = (index: number) => {
+    setActiveFaq(prev => prev === index ? null : index);
+  };
+
 
   const handleVideoTab = (key: VideoKey) => {
     setActiveVideo(key);
@@ -1082,62 +1088,93 @@ export default function Home() {
  </div>
  </div>
  <div className="faq-list" id="faqList">
- <div className="faq-item open">
- <div className="faq-question" onClick={() => {}}>
- <span className="faq-q-text">Preciso ser dentista para abrir uma clínica OdontoCompany?</span>
- <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
- </div>
- <div className="faq-answer"><div className="faq-answer-inner">Não. A grande maioria dos nossos franqueados não é dentista. O franqueado é o gestor do negócio, você contrata um dentista responsável técnico ou faz uma parceria com um sócio técnico. A OdontoCompany apoia na seleção e contratação do profissional certo para sua unidade.</div></div>
- </div>
- <div className="faq-item">
- <div className="faq-question" onClick={() => {}}>
- <span className="faq-q-text">Quanto tempo leva do contrato assinado até a inauguração?</span>
- <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
- </div>
- <div className="faq-answer"><div className="faq-answer-inner">Em média <strong>4 a 6 meses</strong> entre a assinatura do contrato e a abertura da clínica. Esse prazo inclui a escolha e negociação do ponto comercial, execução das obras, montagem dos equipamentos e treinamento da equipe. O time de implantação da OdontoCompany acompanha cada etapa.</div></div>
- </div>
- <div className="faq-item">
- <div className="faq-question" onClick={() => {}}>
- <span className="faq-q-text">Qual o prazo real de retorno do investimento?</span>
- <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
- </div>
- <div className="faq-answer"><div className="faq-answer-inner">A média da rede é <strong>18 a 24 meses</strong> para retorno completo do investimento, com ponto de equilíbrio a partir do 6º mês de operação. Esses números variam conforme a cidade, o ponto comercial, a gestão do franqueado e o perfil de demanda local. Nosso consultor pode mostrar a projeção específica para sua cidade.</div></div>
- </div>
- <div className="faq-item">
- <div className="faq-question" onClick={() => {}}>
- <span className="faq-q-text">Os R$ 450k cobrem tudo ou haverá custos extras?</span>
- <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
- </div>
- <div className="faq-answer"><div className="faq-answer-inner">O investimento a partir de R$ 450 mil inclui <strong>taxa de franquia, reforma do imóvel, aquisição de equipamentos e capital de giro</strong>. O valor exato varia conforme o modelo de clínica (porte da cidade) e as condições do imóvel escolhido. Seu consultor apresentará uma planilha detalhada antes de qualquer decisão.</div></div>
- </div>
- <div className="faq-item">
- <div className="faq-question" onClick={() => {}}>
- <span className="faq-q-text">Como funciona o suporte após a abertura da clínica?</span>
- <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
- </div>
- <div className="faq-answer"><div className="faq-answer-inner">O suporte é contínuo. Nos primeiros meses, o Núcleo de Acompanhamento Inicial faz um suporte intensivo de crescimento. Após esse período, você conta com equipe de operações, marketing, TI e treinamento de forma permanente, além da plataforma digital Minha OdontoCompany com conteúdos e guias atualizados.</div></div>
- </div>
- <div className="faq-item">
- <div className="faq-question" onClick={() => {}}>
- <span className="faq-q-text">Posso abrir mais de uma unidade?</span>
- <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
- </div>
- <div className="faq-answer"><div className="faq-answer-inner">Sim. Temos muitos franqueados multi-unit operando 2, 3 ou mais unidades. Após a estabilização da primeira clínica (geralmente entre 12 e 18 meses), o processo de abertura da segunda fica mais ágil porque você já domina os processos. Existem condições especiais para franqueados que expandem a rede.</div></div>
- </div>
- <div className="faq-item">
- <div className="faq-question" onClick={() => {}}>
- <span className="faq-q-text">O que diferencia a OdontoCompany das outras franquias odontológicas?</span>
- <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
- </div>
- <div className="faq-answer"><div className="faq-answer-inner">Três diferenciais que nenhum concorrente tem no mesmo nível: <strong>(1) Escala</strong>, somos a maior rede com +1.000 unidades, o que gera poder de negociação e marca reconhecida. <strong>(2) Mídia</strong>, investimento em TV nacional com a Eliana como embaixadora. <strong>(3) Tecnologia</strong>, plataforma digital própria, CRM integrado e método exclusivo de captação de pacientes via WhatsApp.</div></div>
- </div>
- <div className="faq-item">
- <div className="faq-question" onClick={() => {}}>
- <span className="faq-q-text">Como é o processo para se tornar franqueado?</span>
- <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
- </div>
- <div className="faq-answer"><div className="faq-answer-inner">São 5 etapas: <strong>(1)</strong> Preenchimento do formulário e recebimento do plano de negócio. <strong>(2)</strong> Reunião com consultor de expansão. <strong>(3)</strong> Visita a uma unidade em operação. <strong>(4)</strong> Aprovação cadastral e assinatura do contrato. <strong>(5)</strong> Início do processo de implantação com suporte da equipe OdontoCompany.</div></div>
- </div>
+    {/* Item 1 */}
+    <div className={`faq-item${activeFaq === 0 ? ' open' : ''}`}>
+      <div className="faq-question" onClick={() => toggleFaq(0)}>
+        <span className="faq-q-text">Preciso ser dentista para abrir uma clínica OdontoCompany?</span>
+        <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div className="faq-answer">
+        <div className="faq-answer-inner">Não. A grande maioria dos nossos franqueados não é dentista. O franqueado é o gestor do negócio, você contrata um dentista responsável técnico ou faz uma parceria com um sócio técnico. A OdontoCompany apoia na seleção e contratação do profissional certo para sua unidade.</div>
+      </div>
+    </div>
+
+    {/* Item 2 */}
+    <div className={`faq-item${activeFaq === 1 ? ' open' : ''}`}>
+      <div className="faq-question" onClick={() => toggleFaq(1)}>
+        <span className="faq-q-text">Quanto tempo leva do contrato assinado até a inauguração?</span>
+        <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div className="faq-answer">
+        <div className="faq-answer-inner">Em média <strong>4 a 6 meses</strong> entre a assinatura do contrato e a abertura da clínica. Esse prazo inclui a escolha e negociação do ponto comercial, execução das obras, montagem dos equipamentos e treinamento da equipe. O time de implantação da OdontoCompany acompanha cada etapa.</div>
+      </div>
+    </div>
+
+    {/* Item 3 */}
+    <div className={`faq-item${activeFaq === 2 ? ' open' : ''}`}>
+      <div className="faq-question" onClick={() => toggleFaq(2)}>
+        <span className="faq-q-text">Qual o prazo real de retorno do investimento?</span>
+        <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div className="faq-answer">
+        <div className="faq-answer-inner">A média da rede é <strong>18 a 24 meses</strong> para retorno completo do investimento, com ponto de equilíbrio a partir do 6º mês de operação. Esses números variam conforme a cidade, o ponto comercial, a gestão do franqueado e o perfil de demanda local. Nosso consultor pode mostrar a projeção específica para sua cidade.</div>
+      </div>
+    </div>
+
+    {/* Item 4 */}
+    <div className={`faq-item${activeFaq === 3 ? ' open' : ''}`}>
+      <div className="faq-question" onClick={() => toggleFaq(3)}>
+        <span className="faq-q-text">Os R$ 450k cobrem tudo ou haverá custos extras?</span>
+        <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div className="faq-answer">
+        <div className="faq-answer-inner">O investimento a partir de R$ 450 mil inclui <strong>taxa de franquia, reforma do imóvel, aquisição de equipamentos e capital de giro</strong>. O valor exato varia conforme o modelo de clínica (porte da cidade) e as condições do imóvel escolhido. Seu consultor apresentará uma planilha detalhada antes de qualquer decisão.</div>
+      </div>
+    </div>
+
+    {/* Item 5 */}
+    <div className={`faq-item${activeFaq === 4 ? ' open' : ''}`}>
+      <div className="faq-question" onClick={() => toggleFaq(4)}>
+        <span className="faq-q-text">Como funciona o suporte após a abertura da clínica?</span>
+        <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div className="faq-answer">
+        <div className="faq-answer-inner">O suporte é contínuo. Nos primeiros meses, o Núcleo de Acompanhamento Inicial faz um suporte intensivo de crescimento. Após esse período, você conta com equipe de operações, marketing, TI e treinamento de forma permanente, além da plataforma digital Minha OdontoCompany com conteúdos e guias atualizados.</div>
+      </div>
+    </div>
+
+    {/* Item 6 */}
+    <div className={`faq-item${activeFaq === 5 ? ' open' : ''}`}>
+      <div className="faq-question" onClick={() => toggleFaq(5)}>
+        <span className="faq-q-text">Posso abrir mais de uma unidade?</span>
+        <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div className="faq-answer">
+        <div className="faq-answer-inner">Sim. Temos muitos franqueados multi-unit operando 2, 3 ou mais unidades. Após a estabilização da primeira clínica (geralmente entre 12 e 18 meses), o processo de abertura da segunda fica mais ágil porque você já domina os processos. Existem condições especiais para franqueados que expandem a rede.</div>
+      </div>
+    </div>
+
+    {/* Item 7 */}
+    <div className={`faq-item${activeFaq === 6 ? ' open' : ''}`}>
+      <div className="faq-question" onClick={() => toggleFaq(6)}>
+        <span className="faq-q-text">O que diferencia a OdontoCompany das outras franquias odontológicas?</span>
+        <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div className="faq-answer">
+        <div className="faq-answer-inner">Três diferenciais que nenhum concorrente tem no mesmo nível: <strong>(1) Escala</strong>, somos a maior rede com +1.000 unidades, o que gera poder de negociação e marca reconhecida. <strong>(2) Mídia</strong>, investimento em TV nacional com a Eliana como embaixadora. <strong>(3) Tecnologia</strong>, plataforma digital própria, CRM integrado e método exclusivo de captação de pacientes via WhatsApp.</div>
+      </div>
+    </div>
+
+    {/* Item 8 */}
+    <div className={`faq-item${activeFaq === 7 ? ' open' : ''}`}>
+      <div className="faq-question" onClick={() => toggleFaq(7)}>
+        <span className="faq-q-text">Como é o processo para se tornar franqueado?</span>
+        <div className="faq-chevron"><svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div className="faq-answer">
+        <div className="faq-answer-inner">São 5 etapas: <strong>(1)</strong> Preenchimento do formulário e recebimento do plano de negócio. <strong>(2)</strong> Reunião com consultor de expansão. <strong>(3)</strong> Visita a uma unidade em operação. <strong>(4)</strong> Aprovação cadastral e assinatura do contrato. <strong>(5)</strong> Início do processo de implantação com suporte da equipe OdontoCompany.</div>
+      </div>
+    </div>
  </div>
  </div>
  </div>

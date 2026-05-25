@@ -1456,7 +1456,7 @@ section { padding: 96px 0; }
   gap: 16px;
 }
 .faq-question:hover { background: var(--green-50); }
-.faq-q-text { @apply font-heading text-h3 font-[600]; font-weight: 500; color: var(--green-900); line-height: 1.4; }
+.faq-q-text { font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--green-900); line-height: 1.4; }
 .faq-chevron {
   width: 20px; height: 20px; border-radius: 50%;
   background: var(--green-100); display: flex; align-items: center; justify-content: center;
@@ -1469,7 +1469,7 @@ section { padding: 96px 0; }
   max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.25s;
 }
 .faq-item.open .faq-answer { max-height: 400px; }
-.faq-answer-inner { padding: 0 22px 20px; @apply font-sans text-base font-[400]; color: var(--gray-600);  }
+.faq-answer-inner { padding: 0 22px 20px; font-family: var(--sans); font-size: 14.5px; font-weight: 400; color: var(--slate-600); line-height: 1.6; }
 .faq-answer-inner strong { color: var(--green-800); }
 
 /* ─── S10: CTA FINAL ─── */
