@@ -1215,19 +1215,30 @@ export default function Home() {
  </div>
  </div>
 </section>
-<footer className="footer">
+<footer className="footer py-12 border-t border-white/10">
  <div className="container">
- <div className="footer-inner">
- <div className="footer-logo">OdontoCompany</div>
- <div className="footer-info">
- ODONTOCOMPANY FRANCHISING S.A. · CNPJ 12.817.681/0001-64<br />
- Av. Ibirapuera, 2332 - Torre I - Indianópolis - São Paulo/SP · CEP 04028-900
- </div>
- <div className="footer-legal">
- *Valores sujeitos ao mercado local e à atuação do franqueado.<br />
- Metodologia OdontoCompany Franchising · Todos os direitos reservados.
- </div>
- </div>
+   <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-8 border-b border-white/10 w-full">
+     <div className="footer-logo">
+       <img src="https://pub-db8ed4fb33634589a6ce5fb07e85cb46.r2.dev/landingpage_odc_franchising/logo_odontocompany.svg" alt="OdontoCompany" height="36" className="brightness-0 invert opacity-95" />
+     </div>
+     <div className="footer-info text-center md:text-right text-xs leading-relaxed max-w-md text-white/50">
+       <strong>ODONTOCOMPANY FRANCHISING S.A.</strong> · CNPJ 12.817.681/0001-64<br />
+       Av. Ibirapuera, 2332 - Torre I - Indianópolis - São Paulo/SP · CEP 04028-900
+     </div>
+   </div>
+   
+   <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 text-[11px] text-white/40 w-full">
+     <div>
+       *Valores sujeitos ao mercado local e à atuação do franqueado.<br />
+       Metodologia OdontoCompany Franchising · Todos os direitos reservados.
+     </div>
+     <div className="flex items-center gap-2 bg-black/20 px-3.5 py-1.5 rounded-xl border border-white/5">
+       <span className="font-semibold text-white/40">Desenvolvido por:</span>
+       <a href="https://op7.com.br" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+         <img src="https://pub-db8ed4fb33634589a6ce5fb07e85cb46.r2.dev/logo/op7/logo.svg" alt="OP7" height="14" />
+       </a>
+     </div>
+   </div>
  </div>
 </footer>
  </>
