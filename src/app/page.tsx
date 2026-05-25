@@ -60,10 +60,13 @@ export default function Home() {
 
   useEffect(() => {
  gsap.registerPlugin(ScrollTrigger);
- const lenis = new Lenis({
- duration: 1.2,
- easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
- });
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    lerp: 0.08,
+    wheelMultiplier: 1.0,
+    touchMultiplier: 1.5,
+  });
  lenis.on('scroll', ScrollTrigger.update);
  gsap.ticker.add((time)=>{
  lenis.raf(time * 1000);
