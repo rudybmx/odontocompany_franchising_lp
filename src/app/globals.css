@@ -1445,6 +1445,11 @@ section { padding: 96px 0; }
 }
 .faq-form-mini-title { font-size: 16px; font-weight: 600; color: var(--green-900); margin-bottom: 6px; }
 .faq-form-mini-sub { font-size: 13px; color: var(--gray-400); margin-bottom: 20px; }
+.faq-form-mini .form-submit {
+  font-size: 13px;
+  padding: 12px 16px;
+  white-space: nowrap;
+}
 .faq-list { display: flex; flex-direction: column; gap: 4px; }
 .faq-item {
   background: white; border-radius: var(--radius);
