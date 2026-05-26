@@ -128,6 +128,7 @@ export default function CtaFunnel() {
                 </label>
                 <input
                   type="tel"
+                  inputMode="tel"
                   value={whatsapp}
                   onChange={(e) => setWhatsapp(e.target.value)}
                   className="form-input"

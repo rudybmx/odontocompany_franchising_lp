@@ -857,7 +857,7 @@ export default function Home() {
     {/* CTA Center */}
     <div className="w-full flex justify-center mt-6">
       <button 
-        className="btn-solid-green text-white font-bold px-10 py-4 text-base"
+        className="btn-solid-green text-white font-bold w-full max-w-sm md:w-auto px-10 py-4 text-base"
         onClick={() => document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })}
       >
         AGENDAR AVALIAÇÃO
