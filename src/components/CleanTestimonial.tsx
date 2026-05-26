@@ -129,26 +129,26 @@ export function CleanTestimonial({ testimonials, className }: CleanTestimonialPr
       </motion.div>
 
       {/* Main content */}
-      <div className="relative min-h-[400px] flex flex-col justify-center">
+      <div className="relative min-h-[400px] flex flex-col justify-center px-4 md:px-8">
         <AnimatePresence mode="wait">
           <motion.blockquote
             key={activeIndex}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
-            className="text-xl md:text-2xl font-light leading-relaxed tracking-tight text-foreground"
+            className="text-xl md:text-2xl font-light leading-relaxed tracking-tight text-[#2D7270]"
           >
             <SplitText text={current.quote} />
           </motion.blockquote>
         </AnimatePresence>
 
         {/* Author section with accent line */}
-        <motion.div className="mt-12 relative" layout>
-          <div className="flex items-center gap-4">
+        <motion.div className="mt-16 relative px-4 md:px-8" layout>
+          <div className="flex items-center gap-6">
             {/* Avatar container with all images stacked */}
-            <div className="relative w-12 h-12 flex-shrink-0">
+            <div className="relative w-14 h-14 flex-shrink-0">
               <motion.div
-                className="absolute -inset-1.5 rounded-full border border-accent/40"
+                className="absolute -inset-2 rounded-full border border-[#2D7270]/30"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
@@ -158,7 +158,7 @@ export function CleanTestimonial({ testimonials, className }: CleanTestimonialPr
                   key={t.image}
                   src={t.image}
                   alt={t.name}
-                  className="absolute inset-0 w-12 h-12 rounded-full object-cover grayscale hover:grayscale-0 transition-[filter] duration-500"
+                  className="absolute inset-0 w-14 h-14 rounded-full object-cover"
                   animate={{
                     opacity: i === activeIndex ? 1 : 0,
                     zIndex: i === activeIndex ? 1 : 0,
@@ -172,23 +172,23 @@ export function CleanTestimonial({ testimonials, className }: CleanTestimonialPr
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                className="relative pl-4"
+                className="relative pl-6"
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 10 }}
                 transition={{ duration: 0.3 }}
               >
                 <motion.div
-                  className="absolute left-0 top-0 bottom-0 w-px bg-accent"
+                  className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#2D7270]"
                   initial={{ scaleY: 0 }}
                   animate={{ scaleY: 1 }}
                   transition={{ duration: 0.4, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                   style={{ originY: 0 }}
                 />
-                <span className="block text-sm font-medium text-foreground tracking-wide">
+                <span className="block text-sm font-bold text-[#2D7270] tracking-wide">
                   {current.name}
                 </span>
-                <span className="block text-xs text-muted-foreground mt-0.5 font-mono uppercase tracking-widest">
+                <span className="block text-xs text-[#5a5e55] mt-1 font-sans uppercase tracking-widest">
                   {current.role}
                 </span>
               </motion.div>
@@ -197,9 +197,9 @@ export function CleanTestimonial({ testimonials, className }: CleanTestimonialPr
         </motion.div>
 
         {/* Progress bar */}
-        <div className="mt-16 h-px bg-border relative overflow-hidden">
+        <div className="mt-12 mx-4 md:mx-8 h-[2px] bg-[#e2e4de] relative overflow-hidden rounded-full">
           <motion.div
-            className="absolute inset-y-0 left-0 bg-accent"
+            className="absolute inset-y-0 left-0 bg-[#2D7270] rounded-full"
             initial={{ width: "0%" }}
             animate={{ width: `${((activeIndex + 1) / testimonials.length) * 100}%` }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
