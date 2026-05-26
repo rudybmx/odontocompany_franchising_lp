@@ -107,30 +107,30 @@ export default function Home() {
 
  // Parallax Hero background
  gsap.fromTo(".hero",
-   { backgroundPositionY: "100%" },
+   { backgroundPositionY: "0%" },
    {
-     backgroundPositionY: "60%",
+     backgroundPositionY: "80%",
      ease: "none",
      scrollTrigger: {
        trigger: ".hero",
        start: "top top",
        end: "bottom top",
-       scrub: 1
+       scrub: 1.5
      }
    }
  );
 
- // Parallax CTA background
+ // Parallax CTA background — começa no topo, desce até embaixo no scroll
  gsap.fromTo(".cta-section",
-   { backgroundPositionY: "50%" },
+   { backgroundPositionY: "0%" },
    {
-     backgroundPositionY: "30%",
+     backgroundPositionY: "100%",
      ease: "none",
      scrollTrigger: {
        trigger: ".cta-section",
        start: "top bottom",
        end: "bottom top",
-       scrub: 1
+       scrub: 1.5
      }
    }
  );

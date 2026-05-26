@@ -1567,8 +1567,9 @@ section { padding: 96px 0; }
 .cta-section {
   background: var(--green-900); 
   background-image: url('https://pub-db8ed4fb33634589a6ce5fb07e85cb46.r2.dev/landingpage_odc_franchising/fundo_footer.png');
-  background-size: cover;
-  background-position: center;
+  background-size: auto 160%;
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
   padding: 100px 0;
   position: relative; overflow: hidden;
 }
