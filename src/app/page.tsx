@@ -103,17 +103,13 @@ export default function Home() {
  },
  y: -150,
  scale: 1.1
- });
-  ScrollTrigger.create({
-    start: "top -40",
-    onEnter: () => document.querySelector('.nav')?.classList.add('scrolled'),
-    onLeaveBack: () => document.querySelector('.nav')?.classList.remove('scrolled')
-  });
- return () => {
- lenis.destroy();
- ScrollTrigger.getAll().forEach(t => t.kill());
- };
- }, []);
+});
+  // Navbar é sempre verde — sem toggle de scroll
+  return () => {
+  lenis.destroy();
+  ScrollTrigger.getAll().forEach(t => t.kill());
+  };
+}, []);
  return (
  <>
 <nav className="nav">
