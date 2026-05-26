@@ -39,9 +39,9 @@ const testimonialsData: Testimonial[] = [
 
 export default function Home() {
   const videos = {
-    expansao: "https://www.youtube.com/embed/gqA9E_jak6w?controls=1&modestbranding=1&rel=0",
-    fundador: "https://www.youtube.com/embed/vJQ7fZJZSKE?controls=1&modestbranding=1&rel=0",
-    clinica: "https://www.youtube.com/embed/XhGBWs60bTE?controls=1&modestbranding=1&rel=0"
+    expansao: "https://www.youtube.com/embed/gqA9E_jak6w?feature=oembed&controls=1&modestbranding=1&rel=0",
+    fundador: "https://www.youtube.com/embed/vJQ7fZJZSKE?feature=oembed&controls=1&modestbranding=1&rel=0",
+    clinica: "https://www.youtube.com/embed/XhGBWs60bTE?feature=oembed&controls=1&modestbranding=1&rel=0"
   };
   type VideoKey = keyof typeof videos;
   const [activeVideo, setActiveVideo] = useState<VideoKey>('fundador');
@@ -289,9 +289,10 @@ export default function Home() {
             <iframe
               id="videoIframe"
               src={videos[activeVideo] + '&autoplay=1'}
-              style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              style={{ width: '100%', height: '100%', border: 'none' }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
               title="Vídeo OdontoCompany"
             ></iframe>
           ) : (
