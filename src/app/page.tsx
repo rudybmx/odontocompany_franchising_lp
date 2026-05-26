@@ -105,37 +105,7 @@ export default function Home() {
  scale: 1.1
 });
 
- // Parallax Hero background
- gsap.fromTo(".hero",
-   { backgroundPositionY: "0%" },
-   {
-     backgroundPositionY: "80%",
-     ease: "none",
-     scrollTrigger: {
-       trigger: ".hero",
-       start: "top top",
-       end: "bottom top",
-       scrub: 1.5
-     }
-   }
- );
-
- // Parallax CTA background — começa no topo, desce até embaixo no scroll
- gsap.fromTo(".cta-section",
-   { backgroundPositionY: "0%" },
-   {
-     backgroundPositionY: "100%",
-     ease: "none",
-     scrollTrigger: {
-       trigger: ".cta-section",
-       start: "top bottom",
-       end: "bottom top",
-       scrub: 1.5
-     }
-   }
- );
-
-  // Navbar é sempre verde — sem toggle de scroll
+ // Navbar é sempre verde — sem toggle de scroll
   return () => {
   lenis.destroy();
   ScrollTrigger.getAll().forEach(t => t.kill());
