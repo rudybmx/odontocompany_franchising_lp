@@ -10,7 +10,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from '@studio-freight/lenis';
 import CtaFunnel from '@/components/CtaFunnel';
 import { ButtonCta } from '@/components/ui/button-shiny';
-import { TestimonialSlider, Testimonial } from '@/components/ui/testimonial-slider';
+import { CleanTestimonial, Testimonial } from '@/components/CleanTestimonial';
 
 
 const testimonialsData: Testimonial[] = [
@@ -47,6 +47,7 @@ export default function Home() {
   const [activeVideo, setActiveVideo] = useState<VideoKey>('fundador');
   const [isPlaying, setIsPlaying] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleFaq = (index: number) => {
     setActiveFaq(prev => prev === index ? null : index);
@@ -103,11 +104,11 @@ export default function Home() {
  y: -150,
  scale: 1.1
  });
- ScrollTrigger.create({
- start: "top -40",
- onEnter: () => gsap.to(".nav", { boxShadow: "0 4px 30px rgba(0,0,0,0.1)", background: "rgba(247,248,244,0.6)", backdropFilter: "blur(20px)", duration: 0.3 }),
- onLeaveBack: () => gsap.to(".nav", { boxShadow: "none", background: "rgba(247,248,244,0.0)", backdropFilter: "blur(0px)", duration: 0.3 })
- });
+  ScrollTrigger.create({
+    start: "top -40",
+    onEnter: () => document.querySelector('.nav')?.classList.add('scrolled'),
+    onLeaveBack: () => document.querySelector('.nav')?.classList.remove('scrolled')
+  });
  return () => {
  lenis.destroy();
  ScrollTrigger.getAll().forEach(t => t.kill());
@@ -121,13 +122,39 @@ export default function Home() {
  <div className="nav-logo">
  <img src="https://pub-db8ed4fb33634589a6ce5fb07e85cb46.r2.dev/landingpage_odc_franchising/logo_odontocompany.svg" alt="OdontoCompany" height="36" />
  </div>
- <div className="nav-links">
+
+ {/* Desktop nav links */}
+ <div className="nav-links hidden md:flex">
  <a href="#vantagens">Vantagens</a>
  <a href="#numeros">Números</a>
  <a href="#depoimentos">Franqueados</a>
  <a href="#faq">Dúvidas</a>
  </div>
- <a href="#cta" className="nav-cta">Quero investir →</a>
+
+ {/* Desktop CTA */}
+ <a href="#cta" className="nav-cta hidden md:inline-flex">Quero investir →</a>
+
+ {/* Mobile hamburger */}
+        <button
+         className="md:hidden flex flex-col gap-1.5 p-2 bg-none border-none cursor-pointer z-[110]"
+         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+         aria-label="Menu"
+        >
+         <span className={`nav-hamburger-line block w-6 h-[2px] rounded transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+         <span className={`nav-hamburger-line block w-6 h-[2px] rounded transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+         <span className={`nav-hamburger-line block w-6 h-[2px] rounded transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+ </button>
+ </div>
+
+ {/* Mobile menu overlay */}
+ <div className={`md:hidden fixed inset-0 z-[100] bg-[rgba(10,31,16,0.97)] backdrop-blur-xl flex flex-col items-center justify-center gap-8 transition-all duration-400 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+ <a href="#vantagens" className="text-white text-2xl font-semibold hover:text-[var(--lime)] transition-colors" onClick={() => setMobileMenuOpen(false)}>Vantagens</a>
+ <a href="#numeros" className="text-white text-2xl font-semibold hover:text-[var(--lime)] transition-colors" onClick={() => setMobileMenuOpen(false)}>Números</a>
+ <a href="#depoimentos" className="text-white text-2xl font-semibold hover:text-[var(--lime)] transition-colors" onClick={() => setMobileMenuOpen(false)}>Franqueados</a>
+ <a href="#faq" className="text-white text-2xl font-semibold hover:text-[var(--lime)] transition-colors" onClick={() => setMobileMenuOpen(false)}>Dúvidas</a>
+            <a href="#cta" className="btn-cta-green text-lg mt-4 px-8 py-4" onClick={() => setMobileMenuOpen(false)}>
+                Quero investir →
+            </a>
  </div>
  </div>
 </nav>
@@ -1071,7 +1098,7 @@ export default function Home() {
       </p>
     </div>
     
-    <TestimonialSlider testimonials={testimonialsData} />
+    <CleanTestimonial testimonials={testimonialsData} />
   </div>
 </section>
 <section className="faq-section" id="faq">

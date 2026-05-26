@@ -63,12 +63,12 @@ export const TestimonialSlider = ({ testimonials, className }: TestimonialSlider
     visible: {
       x: '0%',
       opacity: 1,
-      transition: { type: 'spring', stiffness: 260, damping: 30 },
+      transition: { type: 'spring' as const, stiffness: 260, damping: 30 },
     },
     exit: (direction: number) => ({
       x: direction < 0 ? '100%' : '-100%',
       opacity: 0,
-      transition: { type: 'spring', stiffness: 260, damping: 30 },
+      transition: { type: 'spring' as const, stiffness: 260, damping: 30 },
     }),
   };
 
@@ -97,9 +97,9 @@ export const TestimonialSlider = ({ testimonials, className }: TestimonialSlider
               </div>
 
               {/* Text & Controls Section */}
-              <div className="relative w-full bg-white text-slate-800 rounded-2xl shadow-xl pt-8 md:pt-6 pl-4 md:pl-20 pr-6 pb-6 border border-slate-100 flex flex-col justify-between min-h-[240px]">
-                {/* Watermark Quote Icon - positioned safely in the padding offset on desktop */}
-                <Quote className="absolute top-4 left-4 h-8 w-8 text-slate-200/50" aria-hidden="true" />
+              <div className="relative w-full bg-white text-slate-800 rounded-2xl shadow-xl pt-10 md:pt-8 px-6 md:pl-24 pr-6 pb-8 border border-slate-100 flex flex-col justify-between min-h-[240px]">
+                {/* Watermark Quote Icon */}
+                <Quote className="absolute top-5 left-5 h-7 w-7 text-slate-200/50" aria-hidden="true" />
                 
                 <div className="space-y-3 relative z-10">
                   <blockquote className="text-sm md:text-base mb-4 leading-relaxed text-slate-600 font-medium">
@@ -109,13 +109,13 @@ export const TestimonialSlider = ({ testimonials, className }: TestimonialSlider
                 </div>
 
                 <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                  <div className="pr-12">
+                  <div className="pr-16">
                     <p className="font-bold text-lg text-slate-900 tracking-tight">{currentTestimonial.name}</p>
                     <p className="text-sm text-slate-400 font-semibold">{currentTestimonial.role}</p>
                   </div>
                   
                   {/* Navigation Controls */}
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-shrink-0">
                     <button
                       onClick={handlePrevious}
                       className="inline-flex items-center justify-center rounded-full h-10 w-10 border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-300"
