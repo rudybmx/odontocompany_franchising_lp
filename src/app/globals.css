@@ -1566,17 +1566,29 @@ section { padding: 96px 0; }
 /* ─── S10: CTA FINAL ─── */
 .cta-section {
   background: var(--green-900); 
-  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-image: url('https://pub-db8ed4fb33634589a6ce5fb07e85cb46.r2.dev/landingpage_odc_franchising/fundo_footer.png');
+  background-size: cover;
+  background-position: center;
   padding: 100px 0;
   position: relative; overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(1, 43, 42, 0.85) 0%, 
+    rgba(1, 43, 42, 0.65) 50%,
+    rgba(1, 43, 42, 0.40) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 .cta-bg-glow {
   position: absolute; bottom: -200px; left: -200px;
   width: 600px; height: 600px;
   background: radial-gradient(circle, rgba(29,158,117,0.2) 0%, transparent 70%);
   pointer-events: none;
+  z-index: 0;
 }
 .cta-inner {
   position: relative; z-index: 2;
