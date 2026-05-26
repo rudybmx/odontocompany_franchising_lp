@@ -233,7 +233,7 @@ export default function Home() {
  </div>
 
  {/* Desktop nav links */}
- <div className="nav-links hidden md:flex">
+ <div className="nav-links hidden lg:flex">
  <a href="#vantagens">Vantagens</a>
  <a href="#numeros">Números</a>
  <a href="#depoimentos">Franqueados</a>
@@ -241,11 +241,11 @@ export default function Home() {
  </div>
 
  {/* Desktop CTA */}
- <a href="#cta" className="nav-cta hidden md:inline-flex">Quero investir →</a>
+ <a href="#cta" className="nav-cta hidden lg:inline-flex">Quero investir →</a>
 
  {/* Mobile hamburger */}
         <button
-         className="md:hidden flex flex-col gap-1.5 p-2 bg-none border-none cursor-pointer z-[110]"
+         className="nav-hamburger lg:hidden flex flex-col gap-1.5 p-2 bg-none border-none cursor-pointer z-[110]"
          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
          aria-label="Menu"
         >
@@ -256,7 +256,7 @@ export default function Home() {
  </div>
 
  {/* Mobile menu overlay */}
- <div className={`md:hidden fixed inset-0 z-[100] bg-[rgba(10,31,16,0.97)] backdrop-blur-xl flex flex-col items-center justify-center gap-8 transition-all duration-400 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+ <div className={`lg:hidden fixed inset-0 z-[100] bg-[rgba(10,31,16,0.97)] backdrop-blur-xl flex flex-col items-center justify-center gap-8 transition-all duration-400 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
  <a href="#vantagens" className="text-white text-2xl font-semibold hover:text-[var(--lime)] transition-colors" onClick={() => setMobileMenuOpen(false)}>Vantagens</a>
  <a href="#numeros" className="text-white text-2xl font-semibold hover:text-[var(--lime)] transition-colors" onClick={() => setMobileMenuOpen(false)}>Números</a>
  <a href="#depoimentos" className="text-white text-2xl font-semibold hover:text-[var(--lime)] transition-colors" onClick={() => setMobileMenuOpen(false)}>Franqueados</a>
@@ -1220,17 +1220,16 @@ export default function Home() {
    </div>
    
    <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 text-[11px] text-white/70 w-full">
-     <div>
-       *Valores sujeitos ao mercado local e à atuação do franqueado.<br />
-       Metodologia OdontoCompany Franchising · Todos os direitos reservados.
-     </div>
-     <div className="flex items-center gap-2">
-       <span className="font-semibold text-white/70">Desenvolvido por:</span>
-       <a href="https://op7.com.br" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex items-center">
-         <img src="https://pub-db8ed4fb33634589a6ce5fb07e85cb46.r2.dev/logo/op7/logo.svg" alt="OP7" className="h-6 w-auto object-contain inline-block" />
-       </a>
-     </div>
-   </div>
+      <div>
+        *Valores sujeitos ao mercado local e à atuação do franqueado.<br />
+        Metodologia OdontoCompany Franchising · Todos os direitos reservados.
+      </div>
+      <div className="flex justify-center w-full sm:w-auto mt-4 sm:mt-0">
+        <a href="https://op7.com.br" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex items-center justify-center">
+          <img src="https://pub-db8ed4fb33634589a6ce5fb07e85cb46.r2.dev/logo/op7/logo.svg" alt="OP7" className="h-8 w-auto object-contain" />
+        </a>
+      </div>
+    </div>
  </div>
 </footer>
  </>
