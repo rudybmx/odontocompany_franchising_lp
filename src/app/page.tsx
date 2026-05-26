@@ -37,6 +37,118 @@ const testimonialsData: Testimonial[] = [
   }
 ];
 
+const roadmapSteps = [
+  {
+    number: "01",
+    title: "Conheça o nosso projeto",
+    position: "bottom",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+        <line x1="8" y1="21" x2="16" y2="21"/>
+        <line x1="12" y1="17" x2="12" y2="21"/>
+      </svg>
+    )
+  },
+  {
+    number: "02",
+    title: "COF (Circular de Oferta de Franquia)",
+    position: "top",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+        <circle cx="8" cy="9" r="1"/>
+      </svg>
+    )
+  },
+  {
+    number: "03",
+    title: "Aprovação do candidato e assinatura de contrato",
+    position: "bottom",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="m22 10-6 6-2-2"/>
+      </svg>
+    )
+  },
+  {
+    number: "04",
+    title: "Assinatura do contrato",
+    position: "top",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <path d="M12 20h9"/>
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+      </svg>
+    )
+  },
+  {
+    number: "05",
+    title: "Escolha do imóvel e unidade clínica",
+    position: "bottom",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <path d="M9 21V9h6v12"/>
+        <path d="M9 13h2v2H9z"/>
+      </svg>
+    )
+  },
+  {
+    number: "06",
+    title: "Adequação técnica da unidade clínica",
+    position: "top",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <path d="M6 18h12"/>
+        <path d="M12 18v-6"/>
+        <path d="M19 9h-7V5a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v10h13a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2z"/>
+      </svg>
+    )
+  },
+  {
+    number: "07",
+    title: "Universidade Corporativa",
+    position: "bottom",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+      </svg>
+    )
+  },
+  {
+    number: "08",
+    title: "Inauguração da clínica",
+    position: "top",
+    featured: true,
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M12 6c1-1 3-1 3.5.5.5 1.5 0 3-1 3.5.5.5 1.5 2 1.5 3.5 0 2-1.5 2.5-2.5 2.5s-1.5-.5-1.5-1.5c0 1-1.5 1.5-2.5 1.5S8 15.5 8 13.5c0-1.5 1-3 1.5-3.5-1-.5-1.5-2-1-3.5C9 5 11 5 12 6z"/>
+      </svg>
+    )
+  },
+  {
+    number: "09",
+    title: "Núcleo de Acompanhamento Inicial",
+    position: "bottom",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <line x1="18" y1="20" x2="18" y2="10"/>
+        <line x1="12" y1="20" x2="12" y2="4"/>
+        <line x1="6" y1="20" x2="6" y2="14"/>
+      </svg>
+    )
+  }
+];
+
+
 export default function Home() {
   const videos = {
     expansao: "https://www.youtube.com/embed/gqA9E_jak6w?feature=oembed&controls=1&modestbranding=1&rel=0",
@@ -753,236 +865,88 @@ export default function Home() {
     </div>
   </div>
 </section>
+
+
+
+
+
 <section className="roadmap-section" id="suporte">
   <div className="roadmap-container">
     {/* Header */}
     <div className="roadmap-header">
       <div className="inline-flex items-center gap-2 mb-4">
         <div className="w-6 h-[2px] bg-[#38B549]"></div>
-        <span className="text-xs font-bold uppercase tracking-wider text-[#2D7270]">PASSO A PASSO</span>
+        <span className="text-xs font-extrabold uppercase tracking-wider text-[#2D7270]">ETAPAS DO NOSSO PROCESSO</span>
+        <div className="w-6 h-[2px] bg-[#38B549]"></div>
       </div>
-      <h2>Trilha e Suporte ao <br/><span className="text-[#38B549]">Franqueado</span></h2>
-      <p>Do primeiro contato até a maturidade da sua clínica, passo a passo.</p>
+      <h2 className="text-slate-800 text-4xl md:text-5xl font-black tracking-tight leading-tight">
+        Passo a passo para se tornar um <br/><span className="text-[#38B549]">franqueado de sucesso!</span>
+      </h2>
+      <p className="text-slate-500 font-semibold text-sm md:text-base mt-4">
+        É mais rápido do que você imagina.
+      </p>
     </div>
 
-    {/* Desktop Roadmap Infographic */}
-    <div className="roadmap-serpentina-wrapper !max-w-none hidden lg:block overflow-x-auto pb-6">
-      <svg viewBox="0 0 1100 380" width="1100" height="380" fill="none" xmlns="http://www.w3.org/2000/svg" className="mx-auto">
+    {/* Horizontal Roadmap timeline (Scrollable on mobile) */}
+    <div className="roadmap-timeline-wrapper overflow-x-auto pb-6">
+      <div className="roadmap-timeline-inner">
+        <div className="roadmap-svg-bg">
+          <svg viewBox="0 0 1000 320" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="svg-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#2D7270" floodOpacity="0.12"/>
+              </filter>
+            </defs>
+            <path
+              d="M 55.5 202 L 166.6 118 L 277.7 202 L 388.8 118 L 500 202 L 611.1 118 L 722.2 202 L 833.3 118 L 944.4 202"
+              stroke="#38B549"
+              strokeWidth="3"
+              strokeDasharray="6 6"
+              strokeOpacity="0.8"
+              filter="url(#svg-shadow)"
+            />
+          </svg>
+        </div>
         
-        {/* Top Horizontal Dotted Track */}
-        <line x1="50" y1="125" x2="1050" y2="125" stroke="#2D7270" strokeWidth="2" strokeDasharray="5 5" strokeOpacity="0.4"/>
-        
-        {/* Terminal Pins (Left & Right) */}
-        <circle cx="50" cy="125" r="8" fill="#2D7270"/>
-        <circle cx="1050" cy="125" r="8" fill="#2D7270"/>
-
-        {/* STEP 1: PONTO (x=100) */}
-        {/* Map Pin Droplet */}
-        <path d="M 120 125 C 90 95, 90 35, 120 35 C 150 35, 150 95, 120 125 Z" fill="#2D7270" filter="drop-shadow(0px 4px 10px rgba(0,0,0,0.15))"/>
-        {/* Inner divider */}
-        <line x1="108" y1="80" x2="132" y2="80" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
-        {/* Number */}
-        <text x="120" y="104" fill="#ffffff" fontSize="13" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">01</text>
-        {/* Icon representation (Lightbulb) */}
-        <path d="M 120 50 C 116 50, 113 53, 113 57 C 113 60, 115 62, 117 64 L 117 68 H 123 L 123 64 C 125 62, 127 60, 127 57 C 127 53, 124 50, 120 50 Z" stroke="#A8D156" strokeWidth="1.5" strokeLinecap="round"/>
-        <line x1="118" y1="71" x2="122" y2="71" stroke="#A8D156" strokeWidth="1.5"/>
-
-        {/* STEP 2: OBRA (x=280) */}
-        <path d="M 290 125 C 260 95, 260 35, 290 35 C 320 35, 320 95, 290 125 Z" fill="#38B549" filter="drop-shadow(0px 4px 10px rgba(0,0,0,0.15))"/>
-        <line x1="278" y1="80" x2="302" y2="80" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
-        <text x="290" y="104" fill="#ffffff" fontSize="13" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">02</text>
-        {/* Icon representation (Obra - Ruler/Pencil) */}
-        <rect x="284" y="52" width="12" height="12" rx="1.5" stroke="#ffffff" strokeWidth="1.5"/>
-        <line x1="284" y1="60" x2="296" y2="60" stroke="#ffffff" strokeWidth="1.5"/>
-        <line x1="290" y1="52" x2="290" y2="64" stroke="#ffffff" strokeWidth="1.5"/>
-
-        {/* STEP 3: TREINO (x=460) */}
-        <path d="M 460 125 C 430 95, 430 35, 460 35 C 490 35, 490 95, 460 125 Z" fill="#A8D156" filter="drop-shadow(0px 4px 10px rgba(0,0,0,0.15))"/>
-        <line x1="448" y1="80" x2="472" y2="80" stroke="rgba(0,0,0,0.1)" strokeWidth="1"/>
-        <text x="460" y="104" fill="#2D7270" fontSize="13" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">03</text>
-        {/* Icon representation (Treino - Graduation cap) */}
-        <path d="M 460 50 L 472 56 L 460 62 L 448 56 Z" fill="none" stroke="#2D7270" strokeWidth="1.5"/>
-        <path d="M 452 58.5 V 64 C 452 66, 468 66, 468 64 V 58.5" fill="none" stroke="#2D7270" strokeWidth="1.5"/>
-
-        {/* STEP 4: MÍDIA (x=630) */}
-        <path d="M 630 125 C 600 95, 600 35, 630 35 C 660 35, 660 95, 630 125 Z" fill="#4C8751" filter="drop-shadow(0px 4px 10px rgba(0,0,0,0.15))"/>
-        <line x1="618" y1="80" x2="642" y2="80" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
-        <text x="630" y="104" fill="#ffffff" fontSize="13" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">04</text>
-        {/* Icon representation (Marketing - Megaphone) */}
-        <path d="M 622 58 H 632 L 638 52 V 64 L 632 58 Z" fill="none" stroke="#A8D156" strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M 622 55 H 626 V 61 H 622 Z" fill="none" stroke="#A8D156" strokeWidth="1.5"/>
-
-        {/* STEP 5: SUPORTE (x=800) */}
-        <path d="M 800 125 C 770 95, 770 35, 800 35 C 830 35, 830 95, 800 125 Z" fill="#38B549" filter="drop-shadow(0px 4px 10px rgba(0,0,0,0.15))"/>
-        <line x1="788" y1="80" x2="812" y2="80" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
-        <text x="800" y="104" fill="#ffffff" fontSize="13" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">05</text>
-        {/* Icon representation (Suporte - Shield/Check) */}
-        <path d="M 792 50 C 792 50, 800 48, 800 48 C 800 48, 808 50, 808 50 V 58 C 808 64, 800 68, 800 68 C 800 68, 792 64, 792 58 Z" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round"/>
-
-        {/* STEP 6: TECNOLOGIA (x=970) */}
-        <path d="M 970 125 C 940 95, 940 35, 970 35 C 1000 35, 1000 95, 970 125 Z" fill="#2D7270" filter="drop-shadow(0px 4px 10px rgba(0,0,0,0.15))"/>
-        <line x1="958" y1="80" x2="982" y2="80" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
-        <text x="970" y="104" fill="#ffffff" fontSize="13" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">06</text>
-        {/* Icon representation (Tecnologia - CRM/Computer) */}
-        <rect x="960" y="48" width="20" height="14" rx="2" fill="none" stroke="#A8D156" strokeWidth="1.5"/>
-        <line x1="964" y1="66" x2="976" y2="66" stroke="#A8D156" strokeWidth="1.5"/>
-        <line x1="970" y1="62" x2="970" y2="66" stroke="#A8D156" strokeWidth="1.5"/>
-
-        {/* Segmented Chevron Arrow (Mid Ribbon) */}
-        {/* Chevron 1: Teal */}
-        <path d="M 60 170 H 175 L 190 182.5 L 175 195 H 60 L 75 182.5 Z" fill="#2D7270"/>
-        <text x="120" y="186.5" fill="#ffffff" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif" letterSpacing="0.05em">01. PONTO</text>
-        
-        {/* Chevron 2: Green */}
-        <path d="M 180 170 H 345 L 360 182.5 L 345 195 H 180 L 195 182.5 Z" fill="#38B549"/>
-        <text x="265" y="186.5" fill="#ffffff" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif" letterSpacing="0.05em">02. IMPLANTAÇÃO</text>
-
-        {/* Chevron 3: Lime */}
-        <path d="M 350 170 H 515 L 530 182.5 L 515 195 H 350 L 365 182.5 Z" fill="#A8D156"/>
-        <text x="435" y="186.5" fill="#2D7270" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif" letterSpacing="0.05em">03. TREINAMENTO</text>
-
-        {/* Chevron 4: Medium Green */}
-        <path d="M 520 170 H 685 L 700 182.5 L 685 195 H 520 L 535 182.5 Z" fill="#4C8751"/>
-        <text x="605" y="186.5" fill="#ffffff" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif" letterSpacing="0.05em">04. MARKETING</text>
-
-        {/* Chevron 5: Green */}
-        <path d="M 690 170 H 855 L 870 182.5 L 855 195 H 690 L 705 182.5 Z" fill="#38B549"/>
-        <text x="775" y="186.5" fill="#ffffff" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif" letterSpacing="0.05em">05. SUPORTE</text>
-
-        {/* Chevron 6: Teal */}
-        <path d="M 860 170 H 1020 L 1035 182.5 L 1020 195 H 860 L 875 182.5 Z" fill="#2D7270"/>
-        <text x="945" y="186.5" fill="#ffffff" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif" letterSpacing="0.05em">06. TECNOLOGIA</text>
-
-        {/* Connecting Leader Lines from Chevrons to Text */}
-        <line x1="120" y1="210" x2="120" y2="240" stroke="#2D7270" strokeWidth="1"/>
-        <circle cx="120" cy="210" r="2.5" fill="#2D7270"/>
-        
-        <line x1="290" y1="210" x2="290" y2="240" stroke="#38B549" strokeWidth="1"/>
-        <circle cx="290" cy="210" r="2.5" fill="#38B549"/>
-
-        <line x1="460" y1="210" x2="460" y2="240" stroke="#A8D156" strokeWidth="1"/>
-        <circle cx="460" cy="210" r="2.5" fill="#A8D156"/>
-
-        <line x1="630" y1="210" x2="630" y2="240" stroke="#4C8751" strokeWidth="1"/>
-        <circle cx="630" cy="210" r="2.5" fill="#4C8751"/>
-
-        <line x1="800" y1="210" x2="800" y2="240" stroke="#38B549" strokeWidth="1"/>
-        <circle cx="800" cy="210" r="2.5" fill="#38B549"/>
-
-        <line x1="970" y1="210" x2="970" y2="240" stroke="#2D7270" strokeWidth="1"/>
-        <circle cx="970" cy="210" r="2.5" fill="#2D7270"/>
-
-        {/* STEP TEXTS */}
-        {/* Step 1 Text */}
-        <foreignObject x="40" y="250" width="160" height="120">
-          <div className="text-center font-sans">
-            <h4 className="text-[12px] font-extrabold mb-1" style={{ color: '#2D7270' }}>Análise de ponto</h4>
-            <p className="text-[11px] text-slate-500 font-medium leading-relaxed">Dados de mercado e perfil de consumo.</p>
-          </div>
-        </foreignObject>
-
-        {/* Step 2 Text */}
-        <foreignObject x="210" y="250" width="160" height="120">
-          <div className="text-center font-sans">
-            <h4 className="text-[12px] font-extrabold mb-1" style={{ color: '#38B549' }}>Obra e identidade</h4>
-            <p className="text-[11px] text-slate-500 font-medium leading-relaxed">Projeto padrão com fornecedores homologados.</p>
-          </div>
-        </foreignObject>
-
-        {/* Step 3 Text */}
-        <foreignObject x="380" y="250" width="160" height="120">
-          <div className="text-center font-sans">
-            <h4 className="text-[12px] font-extrabold mb-1" style={{ color: '#4C8751' }}>Treinamento</h4>
-            <p className="text-[11px] text-slate-500 font-medium leading-relaxed">Capacitação completa da equipe antes da inauguração.</p>
-          </div>
-        </foreignObject>
-
-        {/* Step 4 Text */}
-        <foreignObject x="550" y="250" width="160" height="120">
-          <div className="text-center font-sans">
-            <h4 className="text-[12px] font-extrabold mb-1" style={{ color: '#4C8751' }}>Mídia & Captação</h4>
-            <p className="text-[11px] text-slate-500 font-medium leading-relaxed">Campanhas nacionais: digital, TV, rádio e BOT.</p>
-          </div>
-        </foreignObject>
-
-        {/* Step 5 Text */}
-        <foreignObject x="720" y="250" width="160" height="120">
-          <div className="text-center font-sans">
-            <h4 className="text-[12px] font-extrabold mb-1" style={{ color: '#38B549' }}>Pós-inauguração</h4>
-            <p className="text-[11px] text-slate-500 font-medium leading-relaxed">Suporte intensivo na curva de maturação.</p>
-          </div>
-        </foreignObject>
-
-        {/* Step 6 Text */}
-        <foreignObject x="890" y="250" width="160" height="120">
-          <div className="text-center font-sans">
-            <h4 className="text-[12px] font-extrabold mb-1" style={{ color: '#2D7270' }}>Tecnologia & CRM</h4>
-            <p className="text-[11px] text-slate-500 font-medium leading-relaxed">Software de gestão e plataforma Minha OdontoCompany.</p>
-          </div>
-        </foreignObject>
-
-      </svg>
-    </div>
-
-    {/* Mobile Vertical Roadmap */}
-    <div className="roadmap-vertical block lg:hidden">
-      {/* Item 1 */}
-      <div className="roadmap-vertical-item">
-        <div className="roadmap-vertical-node" style={{ background: '#2D7270' }}>01</div>
-        <div className="roadmap-vertical-content">
-          <h4 className="roadmap-vertical-title" style={{ color: '#2D7270' }}>Análise e escolha do ponto</h4>
-          <p className="roadmap-vertical-body">Dados de mercado e perfil de consumo.</p>
-        </div>
-      </div>
-
-      {/* Item 2 */}
-      <div className="roadmap-vertical-item">
-        <div className="roadmap-vertical-node" style={{ background: '#38B549' }}>02</div>
-        <div className="roadmap-vertical-content">
-          <h4 className="roadmap-vertical-title" style={{ color: '#38B549' }}>Obra e identidade visual</h4>
-          <p className="roadmap-vertical-body">Projeto padrão com fornecedores homologados.</p>
-        </div>
-      </div>
-
-      {/* Item 3 */}
-      <div className="roadmap-vertical-item">
-        <div className="roadmap-vertical-node" style={{ background: '#4C8751' }}>03</div>
-        <div className="roadmap-vertical-content">
-          <h4 className="roadmap-vertical-title" style={{ color: '#4C8751' }}>Treinamento pré-abertura</h4>
-          <p className="roadmap-vertical-body">Capacitação completa da equipe antes da inauguração.</p>
-        </div>
-      </div>
-
-      {/* Item 4 */}
-      <div className="roadmap-vertical-item">
-        <div className="roadmap-vertical-node" style={{ background: '#4C8751' }}>04</div>
-        <div className="roadmap-vertical-content">
-          <h4 className="roadmap-vertical-title" style={{ color: '#4C8751' }}>Marketing e captação de pacientes</h4>
-          <p className="roadmap-vertical-body">Campanhas nacionais: digital, TV, rádio e BOT.</p>
-        </div>
-      </div>
-
-      {/* Item 5 */}
-      <div className="roadmap-vertical-item">
-        <div className="roadmap-vertical-node" style={{ background: '#38B549' }}>05</div>
-        <div className="roadmap-vertical-content">
-          <h4 className="roadmap-vertical-title" style={{ color: '#38B549' }}>Acompanhamento pós-inauguração</h4>
-          <p className="roadmap-vertical-body">Suporte intensivo na curva de maturação.</p>
-        </div>
-      </div>
-
-      {/* Item 6 */}
-      <div className="roadmap-vertical-item">
-        <div className="roadmap-vertical-node" style={{ background: '#2D7270' }}>06</div>
-        <div className="roadmap-vertical-content">
-          <h4 className="roadmap-vertical-title" style={{ color: '#2D7270' }}>Tecnologia e gestão contínua</h4>
-          <p className="roadmap-vertical-body">Software de gestão e plataforma Minha OdontoCompany.</p>
+        <div className="roadmap-grid-timeline">
+          {roadmapSteps.map((step, index) => {
+            const isTop = step.position === 'top';
+            return (
+              <div key={index} className={`roadmap-step-col ${isTop ? 'col-top' : 'col-bottom'}`}>
+                <div className="roadmap-card-wrapper">
+                  {isTop && (
+                    <div className="roadmap-card-label-container top">
+                      <span className="roadmap-step-num">{step.number}</span>
+                      <h4 className="roadmap-card-label">{step.title}</h4>
+                    </div>
+                  )}
+                  
+                  <div className="roadmap-card-leaf">
+                    <div className="roadmap-card-bg-layer"></div>
+                    <div className={`roadmap-card-fg-layer ${step.featured ? 'featured' : ''}`}>
+                      <div className="roadmap-card-icon">
+                        {step.icon}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {!isTop && (
+                    <div className="roadmap-card-label-container bottom">
+                      <span className="roadmap-step-num">{step.number}</span>
+                      <h4 className="roadmap-card-label">{step.title}</h4>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
 
   </div>
 </section>
+
 <section className="media-section-redesign" id="midia">
   <div className="container">
     <div className="media-layout">
