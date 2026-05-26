@@ -144,21 +144,15 @@ export function CleanTestimonial({ testimonials, className }: CleanTestimonialPr
 
         {/* Author section with accent line */}
         <motion.div className="mt-16 relative px-4 md:px-8" layout>
-          <div className="flex items-center gap-6">
-            {/* Avatar container with all images stacked */}
-            <div className="relative w-14 h-14 flex-shrink-0">
-              <motion.div
-                className="absolute -inset-2 rounded-full border border-[#2D7270]/30"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              />
+          <div className="flex items-center gap-5">
+            {/* Avatar container */}
+            <div className="relative w-12 h-12 flex-shrink-0">
               {testimonials.map((t, i) => (
                 <motion.img
                   key={t.image}
                   src={t.image}
                   alt={t.name}
-                  className="absolute inset-0 w-14 h-14 rounded-full object-cover"
+                  className="absolute inset-0 w-12 h-12 rounded-full object-cover ring-2 ring-[#2D7270]/20"
                   animate={{
                     opacity: i === activeIndex ? 1 : 0,
                     zIndex: i === activeIndex ? 1 : 0,
@@ -168,23 +162,16 @@ export function CleanTestimonial({ testimonials, className }: CleanTestimonialPr
               ))}
             </div>
 
-            {/* Author info with accent line */}
+            {/* Author info */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                className="relative pl-6"
+                className="relative"
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 10 }}
                 transition={{ duration: 0.3 }}
               >
-                <motion.div
-                  className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#2D7270]"
-                  initial={{ scaleY: 0 }}
-                  animate={{ scaleY: 1 }}
-                  transition={{ duration: 0.4, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  style={{ originY: 0 }}
-                />
                 <span className="block text-sm font-bold text-[#2D7270] tracking-wide">
                   {current.name}
                 </span>
@@ -197,7 +184,7 @@ export function CleanTestimonial({ testimonials, className }: CleanTestimonialPr
         </motion.div>
 
         {/* Progress bar */}
-        <div className="mt-12 mx-4 md:mx-8 h-[2px] bg-[#e2e4de] relative overflow-hidden rounded-full">
+        <div className="mt-16 h-[2px] bg-[#2D7270]/20 relative overflow-hidden mx-4 md:mx-8 rounded-full">
           <motion.div
             className="absolute inset-y-0 left-0 bg-[#2D7270] rounded-full"
             initial={{ width: "0%" }}
