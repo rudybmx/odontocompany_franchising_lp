@@ -104,6 +104,37 @@ export default function Home() {
  y: -150,
  scale: 1.1
 });
+
+ // Parallax Hero background
+ gsap.fromTo(".hero",
+   { backgroundPositionY: "100%" },
+   {
+     backgroundPositionY: "60%",
+     ease: "none",
+     scrollTrigger: {
+       trigger: ".hero",
+       start: "top top",
+       end: "bottom top",
+       scrub: 1
+     }
+   }
+ );
+
+ // Parallax CTA background
+ gsap.fromTo(".cta-section",
+   { backgroundPositionY: "50%" },
+   {
+     backgroundPositionY: "30%",
+     ease: "none",
+     scrollTrigger: {
+       trigger: ".cta-section",
+       start: "top bottom",
+       end: "bottom top",
+       scrub: 1
+     }
+   }
+ );
+
   // Navbar é sempre verde — sem toggle de scroll
   return () => {
   lenis.destroy();
