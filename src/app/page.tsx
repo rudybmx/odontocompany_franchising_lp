@@ -39,9 +39,9 @@ const testimonialsData: Testimonial[] = [
 
 export default function Home() {
   const videos = {
-    expansao: "https://www.youtube.com/embed/gqA9E_jak6w?autoplay=1",
-    fundador: "https://www.youtube.com/embed/vJQ7fZJZSKE?autoplay=1",
-    clinica: "https://www.youtube.com/embed/XhGBWs60bTE?autoplay=1"
+    expansao: "https://www.youtube.com/embed/gqA9E_jak6w?autoplay=1&controls=1&modestbranding=1&rel=0",
+    fundador: "https://www.youtube.com/embed/vJQ7fZJZSKE?autoplay=1&controls=1&modestbranding=1&rel=0",
+    clinica: "https://www.youtube.com/embed/XhGBWs60bTE?autoplay=1&controls=1&modestbranding=1&rel=0"
   };
   type VideoKey = keyof typeof videos;
   const [activeVideo, setActiveVideo] = useState<VideoKey>('fundador');
