@@ -39,9 +39,9 @@ const testimonialsData: Testimonial[] = [
 
 export default function Home() {
   const videos = {
-    expansao: "https://www.youtube.com/embed/gqA9E_jak6w?autoplay=1&controls=1&modestbranding=1&rel=0",
-    fundador: "https://www.youtube.com/embed/vJQ7fZJZSKE?autoplay=1&controls=1&modestbranding=1&rel=0",
-    clinica: "https://www.youtube.com/embed/XhGBWs60bTE?autoplay=1&controls=1&modestbranding=1&rel=0"
+    expansao: "https://www.youtube.com/embed/gqA9E_jak6w?controls=1&modestbranding=1&rel=0",
+    fundador: "https://www.youtube.com/embed/vJQ7fZJZSKE?controls=1&modestbranding=1&rel=0",
+    clinica: "https://www.youtube.com/embed/XhGBWs60bTE?controls=1&modestbranding=1&rel=0"
   };
   type VideoKey = keyof typeof videos;
   const [activeVideo, setActiveVideo] = useState<VideoKey>('fundador');
@@ -285,7 +285,16 @@ export default function Home() {
       {/* Coluna direita, apenas o player, sem mini-tabs */}
       <div className="flex flex-col">
         <div className="video-player-wrap flex-1" id="videoWrap">
-          {!isPlaying ? (
+          {isPlaying ? (
+            <iframe
+              id="videoIframe"
+              src={videos[activeVideo] + '&autoplay=1'}
+              style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              title="Vídeo OdontoCompany"
+            ></iframe>
+          ) : (
             <div 
               className="video-thumb" 
               id="videoThumb" 
@@ -306,15 +315,6 @@ export default function Home() {
               </div>
               <div className="video-duration">3:42</div>
             </div>
-          ) : (
-            <iframe
-              id="videoIframe"
-              src={videos[activeVideo]}
-              style={{ width: '100%', height: '100%', border: 'none', position: 'absolute', inset: 0 }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              title="Vídeo OdontoCompany"
-            ></iframe>
           )}
         </div>
       </div>
