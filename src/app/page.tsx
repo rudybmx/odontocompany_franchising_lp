@@ -256,15 +256,12 @@ export default function Home() {
  </div>
 
  {/* Mobile menu overlay */}
- <div className={`lg:hidden fixed inset-0 z-[100] bg-[rgba(10,31,16,0.97)] backdrop-blur-xl flex flex-col items-center justify-center gap-8 transition-all duration-400 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
- <a href="#vantagens" className="text-white text-2xl font-semibold hover:text-[var(--lime)] transition-colors" onClick={() => setMobileMenuOpen(false)}>Vantagens</a>
- <a href="#numeros" className="text-white text-2xl font-semibold hover:text-[var(--lime)] transition-colors" onClick={() => setMobileMenuOpen(false)}>Números</a>
- <a href="#depoimentos" className="text-white text-2xl font-semibold hover:text-[var(--lime)] transition-colors" onClick={() => setMobileMenuOpen(false)}>Franqueados</a>
- <a href="#faq" className="text-white text-2xl font-semibold hover:text-[var(--lime)] transition-colors" onClick={() => setMobileMenuOpen(false)}>Dúvidas</a>
-            <a href="#cta" className="btn-cta-green text-lg mt-4 px-8 py-4" onClick={() => setMobileMenuOpen(false)}>
-                Quero investir →
-            </a>
- </div>
+  <div className={`lg:hidden fixed inset-0 z-[100] bg-[rgba(5,18,10,0.98)] backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto scale-100' : 'opacity-0 pointer-events-none scale-95'}`}>
+    <a href="#vantagens" className="text-white text-3xl font-bold tracking-widest hover:text-[var(--lime)] transition-all duration-300 uppercase" onClick={() => setMobileMenuOpen(false)}>Vantagens</a>
+    <a href="#numeros" className="text-white text-3xl font-bold tracking-widest hover:text-[var(--lime)] transition-all duration-300 uppercase" onClick={() => setMobileMenuOpen(false)}>Números</a>
+    <a href="#depoimentos" className="text-white text-3xl font-bold tracking-widest hover:text-[var(--lime)] transition-all duration-300 uppercase" onClick={() => setMobileMenuOpen(false)}>Franqueados</a>
+    <a href="#faq" className="text-white text-3xl font-bold tracking-widest hover:text-[var(--lime)] transition-all duration-300 uppercase" onClick={() => setMobileMenuOpen(false)}>Dúvidas</a>
+  </div>
  </div>
 </nav>
 <section className="hero" id="hero">
