@@ -13,7 +13,7 @@ function KpiCard({ label, value }: KpiCardProps) {
       <span className="text-slate-700 font-bold text-[11px] md:text-xs uppercase tracking-tight mb-2 leading-tight">
         {label}
       </span>
-      <span className="text-[#38d838] text-3xl md:text-4xl font-extrabold whitespace-nowrap">
+      <span className="text-[var(--green-500)] text-3xl md:text-4xl font-extrabold whitespace-nowrap">
         {value}
       </span>
     </div>
@@ -41,7 +41,6 @@ export default function KPISection() {
       id="numeros"
     >
       <div className="max-w-6xl w-full mx-auto flex flex-col items-center gap-12">
-        {/* Header */}
         <div className="text-center space-y-4">
           <h2 className="text-white text-4xl md:text-5xl tracking-tight font-black leading-tight">
             Os números da <br />
@@ -53,15 +52,13 @@ export default function KPISection() {
           </p>
         </div>
 
-        {/* Financial Metrics Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           <KpiCard label="FATURAMENTO MÉDIO POR ANO" value="R$ 1,4M" />
           <KpiCard label="INVESTIMENTO INICIAL TOTAL" value="R$ 450k" />
-          <KpiCard label="LUCRATIVIDADE MÉDIA MENSAL" value="20-30%" />
-          <KpiCard label="PRAZO MÉDIO DE RETORNO" value="18 meses" />
+          <KpiCard label="LUCRATIVIDADE MÉDIA MENSAL" value="20-25%" />
+          <KpiCard label="PRAZO MÉDIO DE RETORNO" value="24 meses" />
         </div>
 
-        {/* Detailed Info List */}
         <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 px-4 mx-auto mt-4">
           <InfoItem
             icon={
@@ -76,11 +73,8 @@ export default function KPISection() {
               </svg>
             }
           >
-            <span className="font-bold text-white">
-              Investimento inclui tudo:
-            </span>{" "}
-            taxa de franquia, reforma do imóvel, equipamentos e capital de
-            giro.
+            <span className="font-bold text-white">Investimento inclui tudo:</span>{" "}
+            taxa de franquia, reforma do imóvel, equipamentos e capital de giro.
           </InfoItem>
 
           <InfoItem
@@ -102,9 +96,8 @@ export default function KPISection() {
             }
           >
             <span className="font-bold text-white">
-              Ponto de equilíbrio a partir do 6º mês
-            </span>{" "}
-            de operação, antes de completar o primeiro semestre.
+              Ponto de equilíbrio a partir do 6º mês de operação
+            </span>
           </InfoItem>
 
           <InfoItem
@@ -147,24 +140,21 @@ export default function KPISection() {
               </svg>
             }
           >
-            <span className="font-bold text-white">
-              Alta recorrência de clientes
-            </span>
+            <span className="font-bold text-white">Alta recorrência de clientes</span>
             , tratamentos geram retorno e fidelização natural.
           </InfoItem>
         </div>
 
-        {/* CTA Center */}
         <div className="w-full flex justify-center mt-6">
           <button
-            className="btn-solid-green text-white font-bold px-10 py-4 text-base"
+            className="btn-solid-green normal-case text-white font-bold px-10 py-4 text-base"
             onClick={() =>
               document
                 .getElementById("cta")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            AGENDAR AVALIAÇÃO
+            Quero ser um franqueado
           </button>
         </div>
       </div>

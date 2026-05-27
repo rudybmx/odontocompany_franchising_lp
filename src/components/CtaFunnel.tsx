@@ -2,7 +2,17 @@
 
 import { useState } from "react";
 import { submitCtaForm } from "@/app/actions";
-import { CheckCircle2, ChevronRight, MapPin, Wallet, User, Phone, Briefcase, Calendar, HelpCircle } from "lucide-react";
+import {
+  CheckCircle2,
+  ChevronRight,
+  MapPin,
+  Wallet,
+  User,
+  Phone,
+  Briefcase,
+  Calendar,
+  HelpCircle,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const totalSteps = 6;
@@ -12,7 +22,6 @@ export default function CtaFunnel() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  // Form states
   const [name, setName] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [city, setCity] = useState("");
@@ -52,7 +61,7 @@ export default function CtaFunnel() {
     return (
       <div className="cta-form-card flex flex-col items-center justify-center py-12 text-center">
         <CheckCircle2 className="w-16 h-16 text-[var(--lime)] mb-4" />
-        <h3 className="hero-form-title mb-2">Solicitação Enviada.</h3>
+        <h3 className="hero-form-title mb-2">Solicitação enviada.</h3>
         <p className="hero-form-sub mb-6">
           Nossa equipe entrará em contato em até 2 horas úteis pelo WhatsApp.
         </p>
@@ -60,7 +69,7 @@ export default function CtaFunnel() {
           onClick={() => window.location.reload()}
           className="form-submit bg-white/5 text-white border border-white/10"
         >
-          Voltar ao Início
+          Voltar ao início
         </button>
       </div>
     );
@@ -68,13 +77,13 @@ export default function CtaFunnel() {
 
   return (
     <div className="cta-form-card overflow-hidden relative">
-      {/* Progress Bar */}
       <div className="absolute top-0 left-0 w-full h-1 bg-white/5">
         <div
           className="h-full bg-[var(--lime)] transition-all duration-500 ease-out"
           style={{ width: `${(step / totalSteps) * 100}%` }}
         />
       </div>
+
       <div className="hero-form-top pt-4">
         <div className="flex items-center justify-between mb-2">
           <div className="text-xs font-semibold uppercase tracking-wider text-[var(--lime)]">
@@ -98,9 +107,9 @@ export default function CtaFunnel() {
           {step === 6 && "Nos ajude a personalizar sua experiência."}
         </p>
       </div>
+
       <div className="relative min-h-[180px]">
         <AnimatePresence mode="wait">
-          {/* ── Passo 1: Nome + WhatsApp ── */}
           {step === 1 && (
             <motion.div
               key="step1"
@@ -145,7 +154,6 @@ export default function CtaFunnel() {
             </motion.div>
           )}
 
-          {/* ── Passo 2: Cidade ── */}
           {step === 2 && (
             <motion.div
               key="step2"
@@ -163,7 +171,7 @@ export default function CtaFunnel() {
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                   className="form-input"
-                  placeholder="Ex: Maringá – PR"
+                  placeholder="Ex: Maringá - PR"
                   autoFocus
                 />
               </div>
@@ -185,7 +193,6 @@ export default function CtaFunnel() {
             </motion.div>
           )}
 
-          {/* ── Passo 3: Capital ── */}
           {step === 3 && (
             <motion.div
               key="step3"
@@ -204,9 +211,11 @@ export default function CtaFunnel() {
                     onChange={(e) => setCapital(e.target.value)}
                     className="form-input select-dark appearance-none w-full"
                   >
-                    <option value="" disabled>Selecione uma faixa</option>
-                    <option value="450k-600k">R$ 450k – R$ 600k</option>
-                    <option value="600k-900k">R$ 600k – R$ 900k</option>
+                    <option value="" disabled>
+                      Selecione uma faixa
+                    </option>
+                    <option value="450k-600k">R$ 450k - R$ 600k</option>
+                    <option value="600k-900k">R$ 600k - R$ 900k</option>
                     <option value="900k+">Acima de R$ 900k (multi-unit)</option>
                   </select>
                   <ChevronRight className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 rotate-90 pointer-events-none" />
@@ -230,7 +239,6 @@ export default function CtaFunnel() {
             </motion.div>
           )}
 
-          {/* ── Passo 4: Perfil ── */}
           {step === 4 && (
             <motion.div
               key="step4"
@@ -249,8 +257,9 @@ export default function CtaFunnel() {
                     onChange={(e) => setProfile(e.target.value)}
                     className="form-input select-dark appearance-none w-full"
                   >
-                    <option value="" disabled>Selecione seu perfil</option>
-                    <option value="empresario">Empresário</option>
+                    <option value="" disabled>
+                      Selecione seu perfil
+                    </option>
                     <option value="investidor">Investidor</option>
                     <option value="dentista">Dentista</option>
                   </select>
@@ -275,7 +284,6 @@ export default function CtaFunnel() {
             </motion.div>
           )}
 
-          {/* ── Passo 5: Prazo ── */}
           {step === 5 && (
             <motion.div
               key="step5"
@@ -294,7 +302,9 @@ export default function CtaFunnel() {
                     onChange={(e) => setPrazo(e.target.value)}
                     className="form-input select-dark appearance-none w-full"
                   >
-                    <option value="" disabled>Selecione um prazo</option>
+                    <option value="" disabled>
+                      Selecione um prazo
+                    </option>
                     <option value="ate-3">Até 3 meses</option>
                     <option value="3-6">3 a 6 meses</option>
                     <option value="6-12">6 a 12 meses</option>
@@ -321,7 +331,6 @@ export default function CtaFunnel() {
             </motion.div>
           )}
 
-          {/* ── Passo 6: Conhecimento + Submit ── */}
           {step === 6 && (
             <motion.div
               key="step6"
@@ -340,7 +349,9 @@ export default function CtaFunnel() {
                     onChange={(e) => setConhecimento(e.target.value)}
                     className="form-input select-dark appearance-none w-full"
                   >
-                    <option value="" disabled>Selecione uma opção</option>
+                    <option value="" disabled>
+                      Selecione uma opção
+                    </option>
                     <option value="conhece-bem">Sim, já conheço bem</option>
                     <option value="conhece-nome">Conheço de nome</option>
                     <option value="nao-conhece">Não conheço ainda</option>
@@ -372,8 +383,12 @@ export default function CtaFunnel() {
           )}
         </AnimatePresence>
       </div>
+
       <div className="form-trust mt-4">
-        <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <rect x="3" y="11" width="18" height="11" rx="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </svg>
         <span>Sem compromisso. Resposta em até 2 horas úteis.</span>
       </div>
     </div>

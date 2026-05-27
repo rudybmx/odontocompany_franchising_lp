@@ -1,20 +1,13 @@
 "use client";
 
-import React from "react";
-
 export default function CompareSection() {
   return (
     <section className="compare-section-new" id="comparativo">
-      {/* Ambient Glow */}
       <div className="cmp-glow" />
 
       <div className="cmp-inner">
-        {/* Header Section */}
         <header className="cmp-header">
-          <div className="cmp-eyebrow">
-            <div className="cmp-eyebrow-line" />
-            <span>Por que OdontoCompany?</span>
-          </div>
+          <div className="section-kicker section-kicker--dark">Por que OdontoCompany?</div>
           <h2 className="cmp-title">
             Quanto rende R$ 450k nos <em>diferentes investimentos</em>?
           </h2>
@@ -24,9 +17,7 @@ export default function CompareSection() {
           </p>
         </header>
 
-        {/* Table Container */}
         <div className="cmp-table-container group">
-          {/* Outer blurred glow */}
           <div className="cmp-table-glow group-hover:opacity-50" />
 
           <div className="cmp-table-card">
@@ -35,9 +26,7 @@ export default function CompareSection() {
                 <thead>
                   <tr>
                     <th className="th-empty"></th>
-                    <th className="th-highlight rounded-t-lg">
-                      OdontoCompany
-                    </th>
+                    <th className="th-highlight rounded-t-lg">OdontoCompany</th>
                     <th>Tesouro IPCA+</th>
                     <th>FII médio</th>
                     <th>CDB 120% CDI</th>
@@ -45,7 +34,6 @@ export default function CompareSection() {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* Row 1 */}
                   <tr>
                     <td className="td-label">Renda mensal média</td>
                     <td className="td-highlight">
@@ -56,7 +44,6 @@ export default function CompareSection() {
                     <td>R$ 3.500</td>
                     <td className="td-dim">R$ 3–8k*</td>
                   </tr>
-                  {/* Row 2 */}
                   <tr>
                     <td className="td-label">Retorno do capital</td>
                     <td className="td-highlight font-semibold">18–24 meses</td>
@@ -65,7 +52,6 @@ export default function CompareSection() {
                     <td>~11 anos</td>
                     <td className="td-dim">Indefinido</td>
                   </tr>
-                  {/* Row 3 */}
                   <tr>
                     <td className="td-label">Gestão necessária</td>
                     <td className="td-highlight">Com suporte total</td>
@@ -74,7 +60,6 @@ export default function CompareSection() {
                     <td>Zero</td>
                     <td className="td-dim">100% sozinho</td>
                   </tr>
-                  {/* Row 4 */}
                   <tr>
                     <td className="td-label">Marca e marketing</td>
                     <td className="td-highlight">Incluso + Eliana</td>
@@ -83,7 +68,6 @@ export default function CompareSection() {
                     <td className="td-dim">-</td>
                     <td className="td-dim">Por conta</td>
                   </tr>
-                  {/* Row 5 */}
                   <tr>
                     <td className="td-label">Modelo validado</td>
                     <td className="td-highlight rounded-b-lg font-semibold">
@@ -100,16 +84,14 @@ export default function CompareSection() {
           </div>
         </div>
 
-        {/* Disclaimer */}
         <p className="cmp-disclaimer">
           * Valores médios estimados. Resultados variam conforme mercado,
           localização e gestão do franqueado. Metodologia OdontoCompany
           Franchising.
         </p>
 
-        {/* CTA Area */}
         <div className="cmp-cta-area">
-          <a className="cmp-cta-btn group" href="#contato">
+          <a className="cmp-cta-btn group" href="#cta">
             <span className="cmp-cta-shimmer group-hover:animate-shimmer" />
             <span className="cmp-cta-content">
               Simular meu investimento

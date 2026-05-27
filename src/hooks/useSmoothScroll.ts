@@ -43,12 +43,30 @@ export function useSmoothScroll() {
       y: -150, scale: 1.1
     });
 
-    // Navbar blur on scroll
-    ScrollTrigger.create({
-      start: "top -40",
-      onEnter: () => gsap.to(".nav", { boxShadow: "0 4px 30px rgba(0,0,0,0.1)", background: "rgba(247,248,244,0.6)", backdropFilter: "blur(20px)", duration: 0.3 }),
-      onLeaveBack: () => gsap.to(".nav", { boxShadow: "none", background: "rgba(247,248,244,0.0)", backdropFilter: "blur(0px)", duration: 0.3 })
-    });
+    // Desktop navbar keeps the same green glass tone as the mobile shell.
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+      ScrollTrigger.create({
+        start: "top -40",
+        onEnter: () => gsap.to(".nav", {
+          background: "rgba(45, 114, 112, 0.92)",
+          backdropFilter: "blur(28px) saturate(145%)",
+          boxShadow: "0 24px 60px rgba(0,0,0,0.22)",
+          borderBottomColor: "rgba(255,255,255,0.12)",
+          duration: 0.55,
+          ease: "power3.out",
+          overwrite: "auto"
+        }),
+        onLeaveBack: () => gsap.to(".nav", {
+          background: "rgba(45, 114, 112, 0.85)",
+          backdropFilter: "blur(22px) saturate(130%)",
+          boxShadow: "0 4px 30px rgba(0,0,0,0.15)",
+          borderBottomColor: "rgba(255,255,255,0.08)",
+          duration: 0.55,
+          ease: "power3.out",
+          overwrite: "auto"
+        })
+      });
+    }
 
     return () => {
       lenis.destroy();

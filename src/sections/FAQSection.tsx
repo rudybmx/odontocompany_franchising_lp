@@ -13,13 +13,9 @@ export default function FAQSection() {
   return (
     <section className="faq-section" id="faq">
       <div className="container">
+        <div className="section-kicker section-kicker--light">Dúvidas frequentes</div>
         <div className="faq-layout">
-          {/* Coluna sticky esquerda */}
           <div className="faq-sticky">
-            <div className="section-eyebrow">
-              <div className="section-eyebrow-line" />
-              <span>Dúvidas frequentes</span>
-            </div>
             <h2 className="section-title">
               Tem dúvidas? <em>Temos as respostas.</em>
             </h2>
@@ -39,29 +35,21 @@ export default function FAQSection() {
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                Falar com um consultor agora →
+                Falar com um consultor agora &rarr;
               </button>
             </div>
           </div>
 
-          {/* Lista de accordion */}
           <div className="faq-list">
             {faqData.map((item, index) => (
               <div
                 key={index}
                 className={`faq-item${activeFaq === index ? " open" : ""}`}
               >
-                <div
-                  className="faq-question"
-                  onClick={() => toggleFaq(index)}
-                >
+                <div className="faq-question" onClick={() => toggleFaq(index)}>
                   <span className="faq-q-text">{item.question}</span>
                   <div className="faq-chevron">
-                    <svg
-                      fill="none"
-                      strokeWidth="2.5"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg fill="none" strokeWidth="2.5" viewBox="0 0 24 24">
                       <polyline points="6 9 12 15 18 9" />
                     </svg>
                   </div>

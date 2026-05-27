@@ -1,71 +1,39 @@
 'use client';
 
-import CtaFunnel from '@/components/CtaFunnel';
+import CtaFunnel from "@/components/CtaFunnel";
 
 export default function HeroSection() {
   return (
     <section className="hero" id="hero">
-      <div className="hero-overlay"></div>
+      <div className="hero-overlay" />
       <div className="hero-inner">
+        <div className="section-kicker section-kicker--dark hero-kicker animate-in delay-1 hidden">
+          Maior rede de franquias odontológicas do Brasil
+        </div>
         <div className="hero-content">
-          <div className="hero-eyebrow animate-in delay-1">
-            <div className="hero-eyebrow-line"></div>
-            <span>Maior rede de franquias odontológicas do Brasil</span>
-          </div>
           <h1 className="hero-headline animate-in delay-2">
-            Fature até <em>R$&nbsp;1,4&nbsp;milhão</em> por ano com a franquia
-            líder em odontologia
+            Maior <em>ecossistema</em> de odontologia do Brasil
           </h1>
           <p className="hero-sub animate-in delay-3">
             +1.000 unidades. +6 milhões de pacientes. Modelo testado em 35 anos
             de mercado. Retorno do investimento a partir do 18º mês.
           </p>
-          <div className="animate-in delay-4 max-w-lg mt-6">
+          <div className="animate-in delay-4 max-w-lg mt-6 hero-ctas">
             <CtaFunnel />
           </div>
         </div>
       </div>
       <div className="hero-ticker">
         <div className="hero-ticker-track">
-          <div className="hero-ticker-item">
-            <span>R$ 450k investimento inicial</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>20–30% lucratividade mensal</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>18 meses prazo de retorno</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>+1.000 unidades ativas</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>+6 milhões de pacientes</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>35 anos de mercado</span>
-          </div>
-          <div className="hero-ticker-item">
-            <span>R$ 450k investimento inicial</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>20–30% lucratividade mensal</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>18 meses prazo de retorno</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>+1.000 unidades ativas</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>+6 milhões de pacientes</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>35 anos de mercado</span>
-          </div>
-          <div className="hero-ticker-item">
-            <span>R$ 450k investimento inicial</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>20–30% lucratividade mensal</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>18 meses prazo de retorno</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>+1.000 unidades ativas</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>+6 milhões de pacientes</span>
-            <span className="hero-ticker-sep">·</span>
-            <span>35 anos de mercado</span>
-          </div>
+          {Array.from({ length: 3 }).map((_, index) => (
+            <div className="hero-ticker-item" key={index}>
+              <span>20 a 25% LUCRATIVIDADE MENSAL</span>
+              <span className="hero-ticker-sep">·</span>
+              <span>+20 MILHÕES DE PACIENTES</span>
+              <span className="hero-ticker-sep">·</span>
+              <span>24 MESES PRAZO DE RETORNO</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

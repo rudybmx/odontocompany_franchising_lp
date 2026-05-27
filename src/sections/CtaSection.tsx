@@ -7,13 +7,9 @@ export default function CtaSection() {
     <section className="cta-section" id="cta">
       <div className="cta-bg-glow" />
       <div className="container">
+        <div className="section-kicker section-kicker--light">Próximo passo</div>
         <div className="cta-inner">
-          {/* Coluna esquerda */}
-          <div>
-            <div className="section-eyebrow">
-              <div className="section-eyebrow-line" />
-              <span>Próximo passo</span>
-            </div>
+          <div className="cta-copy-glass">
             <h2 className="cta-title">
               Territórios disponíveis na sua cidade,{" "}
               <em>consulte antes que feche</em>
@@ -45,8 +41,6 @@ export default function CtaSection() {
               </div>
             </div>
           </div>
-
-          {/* Coluna direita — form CtaFunnel */}
           <CtaFunnel />
         </div>
       </div>

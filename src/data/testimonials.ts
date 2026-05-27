@@ -1,31 +1,26 @@
-export interface Testimonial {
-  image: string;
-  quote: string;
-  name: string;
-  role: string;
-  rating: number;
+export interface TestimonialData {
+  nome: string;
+  titulo: string;
+  depoimento: string;
 }
 
-export const testimonialsData: Testimonial[] = [
+export const testimonialsData: TestimonialData[] = [
   {
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop',
-    quote: "Saí de 20 anos no mercado financeiro sem nunca ter tocado em odontologia. O suporte da OdontoCompany foi tão completo que me senti seguro desde o primeiro dia. Hoje tenho 2 unidades e conquistei um lucro médio mensal de R$ 28k após 18 meses.",
-    name: 'Ricardo S.',
-    role: 'Ex-executivo bancário • Campinas, SP',
-    rating: 5
+    nome: "Dr. Thiago Ambrozio",
+    titulo: "Dentista empreendedor com 3 unidades.",
+    depoimento:
+      "Como eu já conhecia a rede e trabalhei como dentista por mais de seis anos com vários franqueados OdontoCompany, isso me despertou o interesse de ter uma unidade de sucesso também e, por ser um nome muito forte no mercado odontológico, não havia outra opção.",
   },
   {
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop',
-    quote: "Tinha minha clínica solo há 8 anos e estava travada. Com a OdontoCompany consegui escalar sem perder qualidade. A estrutura de marketing trouxe um volume de pacientes que nunca conseguiria sozinha. Hoje alcancei 3× mais receita.",
-    name: 'Dra. Ana C.',
-    role: 'Dentista proprietária • Belo Horizonte, MG',
-    rating: 5
+    nome: "Adriana Onoda",
+    titulo: "Empreendedora e franqueada",
+    depoimento:
+      "Sabemos de como está o mercado lá fora, mas a gente está com os resultados bem legais. Então, para quem quer abrir uma clínica, tem que ser perseverante. Então, assim, a gente entrou, apostou, está num crescimento e, eu falo, suporte a gente tem, a franquia com o nome a gente tem. Vem para a OdontoCompany.",
   },
   {
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop',
-    quote: "Comecei com 1 unidade em 2022. Em 2024 abri a terceira. O modelo escala muito bem, cada unidade nova fica mais fácil de operar porque já domino os processos. São 3 unidades ativas abertas em apenas 2 anos.",
-    name: 'Marcos F.',
-    role: 'Empresário do setor imobiliário • Recife, PE',
-    rating: 5
-  }
+    nome: "João Paulo de Lima, Rebecca Stafocher e Leandro Stafocher",
+    titulo: "Multifranqueados com 9 unidades",
+    depoimento:
+      "Hoje a nossa vida é muito melhor, tanto financeiramente quanto profissionalmente.\nDeixamos os consultórios particulares, o dia a dia operacional e temos uma qualidade de vida muito melhor.",
+  },
 ];
