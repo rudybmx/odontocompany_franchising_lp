@@ -7,9 +7,6 @@ export default function HeroSection() {
     <section className="hero" id="hero">
       <div className="hero-overlay" />
       <div className="hero-inner">
-        <div className="section-kicker section-kicker--dark hero-kicker animate-in delay-1 hidden">
-          Maior rede de franquias odontológicas do Brasil
-        </div>
         <div className="hero-content">
           <h1 className="hero-headline animate-in delay-2">
             Maior <em>ecossistema</em> de odontologia do Brasil
