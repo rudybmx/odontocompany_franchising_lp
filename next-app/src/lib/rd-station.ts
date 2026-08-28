@@ -63,16 +63,23 @@ export type RdLeadInput = {
   state: string;
   city: string;
   trafficSource: string;
+  trafficMedium: string;
   capital: string;
   profile: string;
   prazo: string;
   conhecimento: string;
   eventId: string;
   utmSource?: string;
-  utmMedium?: string;
   utmCampaign?: string;
   utmContent?: string;
   utmTerm?: string;
+  gclid?: string;
+  fbclid?: string;
+  wbraid?: string;
+  gbraid?: string;
+  msclkid?: string;
+  conversionUrl?: string;
+  clientTrackingId?: string;
 };
 
 export type RdConversionResult = {
@@ -99,13 +106,19 @@ export async function sendConversionToRD(lead: RdLeadInput): Promise<RdConversio
         personal_phone: lead.personalPhone,
         state: lead.state,
         city: lead.city,
-        traffic_source: lead.trafficSource,
         tags: LEAD_TAGS,
-        cf_utm_source: lead.utmSource || "",
-        cf_utm_medium: lead.utmMedium || "",
-        cf_utm_campaign: lead.utmCampaign || "",
-        cf_utm_content: lead.utmContent || "",
-        cf_utm_term: lead.utmTerm || "",
+        traffic_source: lead.trafficSource,
+        traffic_medium: lead.trafficMedium,
+        traffic_campaign: lead.utmCampaign || "",
+        traffic_term: lead.utmTerm || "",
+        traffic_value: lead.utmContent || "",
+        conversion_url: lead.conversionUrl || "",
+        client_tracking_id: lead.clientTrackingId || "",
+        gclid: lead.gclid || "",
+        fbclid: lead.fbclid || "",
+        wbraid: lead.wbraid || "",
+        gbraid: lead.gbraid || "",
+        msclkid: lead.msclkid || "",
         cf_capital: RD_CAPITAL_LABELS[lead.capital] || lead.capital,
         cf_perfil_de_investidor: RD_PROFILE_OPTIONS[lead.profile] || lead.profile,
         cf_prazo_abertura_clinica: lead.prazo,

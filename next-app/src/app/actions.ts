@@ -13,10 +13,18 @@ export async function submitCtaForm(formData: FormData) {
   const prazo = formData.get("prazo") as string;
   const conhecimento = formData.get("conhecimento") as string;
   const utmSource = formData.get("utm_source") as string;
-  const utmMedium = formData.get("utm_medium") as string;
   const utmCampaign = formData.get("utm_campaign") as string;
   const utmContent = formData.get("utm_content") as string;
   const utmTerm = formData.get("utm_term") as string;
+  const trafficSource = formData.get("traffic_source") as string;
+  const trafficMedium = formData.get("traffic_medium") as string;
+  const gclid = formData.get("gclid") as string;
+  const fbclid = formData.get("fbclid") as string;
+  const wbraid = formData.get("wbraid") as string;
+  const gbraid = formData.get("gbraid") as string;
+  const msclkid = formData.get("msclkid") as string;
+  const conversionUrl = formData.get("page_url") as string;
+  const clientTrackingId = formData.get("client_tracking_id") as string;
   const eventId = formData.get("event_id") as string;
 
   let leadId: string | undefined;
@@ -28,17 +36,24 @@ export async function submitCtaForm(formData: FormData) {
       personalPhone: whatsapp.replace(/\D/g, ""),
       state,
       city,
-      trafficSource: utmSource || "site",
+      trafficSource: trafficSource || "direto",
+      trafficMedium: trafficMedium || "direto",
       capital,
       profile,
       prazo,
       conhecimento,
       eventId,
       utmSource,
-      utmMedium,
       utmCampaign,
       utmContent,
       utmTerm,
+      gclid,
+      fbclid,
+      wbraid,
+      gbraid,
+      msclkid,
+      conversionUrl,
+      clientTrackingId,
     });
     leadId = result.leadId;
   } catch (error) {

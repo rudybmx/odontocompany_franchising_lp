@@ -3,6 +3,12 @@
 import { useEffect, useState } from "react";
 import { submitCtaForm } from "@/app/actions";
 import {
+  captureAttribution,
+  createEventId,
+  getClientTrackingId,
+  resolveTrafficSource,
+} from "@/lib/tracking";
+import {
   CheckCircle2,
   ChevronRight,
   MapPin,
@@ -35,15 +41,6 @@ const BRAZIL_STATES = [
   "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO",
 ];
 
-const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"] as const;
-type UtmParams = Record<(typeof UTM_KEYS)[number], string>;
-
-declare global {
-  interface Window {
-    dataLayer?: Record<string, unknown>[];
-  }
-}
-
 export default function CtaFunnel({ light = false }: { light?: boolean }) {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -59,23 +56,11 @@ export default function CtaFunnel({ light = false }: { light?: boolean }) {
   const [profile, setProfile] = useState("");
   const [prazo, setPrazo] = useState("");
   const [conhecimento, setConhecimento] = useState("");
-  const [utms, setUtms] = useState<UtmParams>({
-    utm_source: "",
-    utm_medium: "",
-    utm_campaign: "",
-    utm_content: "",
-    utm_term: "",
-  });
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setUtms((prev) => {
-      const next = { ...prev };
-      for (const key of UTM_KEYS) {
-        next[key] = params.get(key) || "";
-      }
-      return next;
-    });
+    // Captura e persiste UTMs/Click IDs em sessionStorage assim que a página carrega,
+    // pra não perder a atribuição se a pessoa navegar/recarregar sem query string.
+    captureAttribution();
   }, []);
 
   const phoneDigits = whatsapp.replace(/\D/g, "").length;
@@ -95,7 +80,11 @@ export default function CtaFunnel({ light = false }: { light?: boolean }) {
     if (!conhecimento) return;
     setLoading(true);
     setErrorMessage("");
-    const eventId = crypto.randomUUID();
+    const eventId = createEventId();
+    const attribution = captureAttribution();
+    const clientTrackingId = getClientTrackingId();
+    const resolved = resolveTrafficSource(attribution.utm_source, attribution.utm_medium, attribution.referrer);
+
     const formData = new FormData();
     formData.append("name", name);
     formData.append("email", email);
@@ -107,31 +96,47 @@ export default function CtaFunnel({ light = false }: { light?: boolean }) {
     formData.append("prazo", prazo);
     formData.append("conhecimento", conhecimento);
     formData.append("event_id", eventId);
-    for (const key of UTM_KEYS) {
-      formData.append(key, utms[key]);
-    }
+    formData.append("utm_source", attribution.utm_source);
+    formData.append("utm_campaign", attribution.utm_campaign);
+    formData.append("utm_content", attribution.utm_content);
+    formData.append("utm_term", attribution.utm_term);
+    formData.append("traffic_source", resolved.source);
+    formData.append("traffic_medium", resolved.medium);
+    formData.append("gclid", attribution.gclid);
+    formData.append("fbclid", attribution.fbclid);
+    formData.append("wbraid", attribution.wbraid);
+    formData.append("gbraid", attribution.gbraid);
+    formData.append("msclkid", attribution.msclkid);
+    formData.append("page_url", attribution.page_url);
+    formData.append("client_tracking_id", clientTrackingId);
+
     const res = await submitCtaForm(formData);
     if (res.success) {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: "lead_form_submit_success",
-        form_id: "lp_franquias",
-        form_name: "formulario_franquias",
-        lead_type: "franquia",
+        event_id: eventId,
+        lead_id: res.leadId || "",
+        form_id: "lp_investidores_form",
+        form_name: "lp_investidores",
+        lead_type: "franquia_investidor",
         business_unit: "b2b_franquias",
         conversion_identifier: "LP Investidores OdontoCompany",
         rd_status: "success",
-        lead_id: res.leadId || "",
-        event_id: eventId,
         capital_investimento: capital,
         perfil_investidor: profile,
         prazo_abertura_clinica: prazo,
         conhece_odontocompany: conhecimento,
-        utm_source: utms.utm_source,
-        utm_medium: utms.utm_medium,
-        utm_campaign: utms.utm_campaign,
-        utm_content: utms.utm_content,
-        utm_term: utms.utm_term,
+        utm_source: attribution.utm_source,
+        utm_medium: attribution.utm_medium,
+        utm_campaign: attribution.utm_campaign,
+        utm_content: attribution.utm_content,
+        utm_term: attribution.utm_term,
+        gclid: attribution.gclid,
+        fbclid: attribution.fbclid,
+        wbraid: attribution.wbraid,
+        gbraid: attribution.gbraid,
+        msclkid: attribution.msclkid,
       });
       setSuccess(true);
     } else {

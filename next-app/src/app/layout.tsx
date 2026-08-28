@@ -4,6 +4,8 @@ import Script from "next/script";
 import "./globals.css";
 
 const GTM_ID = "GTM-WGJGL3D";
+const RD_TRACKING_SCRIPT_URL =
+  "https://d335luupugsy2.cloudfront.net/js/loader-scripts/54159491-bf1c-4952-844e-e6953d248069-loader.js";
 
 const montserrat = Montserrat({
   variable: "--font-brand",
@@ -78,6 +80,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {children}
+        {/* Script nativo de rastreamento do RD Station — só monitoramento passivo.
+            NÃO habilitar a identificação/integração automática de formulários do RD
+            para essa página: a criação do lead já é feita via API pelo backend. */}
+        <Script src={RD_TRACKING_SCRIPT_URL} strategy="afterInteractive" async />
       </body>
     </html>
   );
