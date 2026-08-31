@@ -1,13 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { submitCtaForm } from "@/app/actions";
+import {
+  captureAttribution,
+  createEventId,
+  getClientTrackingId,
+  resolveTrafficSource,
+} from "@/lib/tracking";
 import {
   CheckCircle2,
   ChevronRight,
   MapPin,
   Wallet,
   User,
+  Mail,
   Phone,
   Briefcase,
   Calendar,
@@ -17,22 +24,52 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const totalSteps = 6;
 
+function isValidEmail(value: string) {
+  return /^[A-Za-z0-9_\-.]+@[A-Za-z0-9_\-.]{2,}\.[A-Za-z0-9]{2,}(\.[A-Za-z0-9])?/.test(value);
+}
+
+function formatPhone(value: string) {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+  if (digits.length <= 2) return digits;
+  if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+}
+
+const BRAZIL_STATES = [
+  "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG",
+  "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO",
+];
+
 export default function CtaFunnel({ light = false }: { light?: boolean }) {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [city, setCity] = useState("");
+  const [state, setStateUf] = useState("");
   const [capital, setCapital] = useState("");
   const [profile, setProfile] = useState("");
   const [prazo, setPrazo] = useState("");
   const [conhecimento, setConhecimento] = useState("");
 
+  useEffect(() => {
+    // Captura e persiste UTMs/Click IDs em sessionStorage assim que a página carrega,
+    // pra não perder a atribuição se a pessoa navegar/recarregar sem query string.
+    captureAttribution();
+  }, []);
+
+  const phoneDigits = whatsapp.replace(/\D/g, "").length;
+  const emailValid = email === "" || isValidEmail(email);
+  const phoneValid = whatsapp === "" || phoneDigits >= 10;
+
   const handleNext = () => {
-    if (step === 1 && (!name || !whatsapp)) return;
-    if (step === 2 && !city) return;
+    if (step === 1 && (!name || !isValidEmail(email) || phoneDigits < 10)) return;
+    if (step === 2 && (!city || !state)) return;
     if (step === 3 && !capital) return;
     if (step === 4 && !profile) return;
     if (step === 5 && !prazo) return;
@@ -42,17 +79,68 @@ export default function CtaFunnel({ light = false }: { light?: boolean }) {
   const handleSubmit = async () => {
     if (!conhecimento) return;
     setLoading(true);
+    setErrorMessage("");
+    const eventId = createEventId();
+    const attribution = captureAttribution();
+    const clientTrackingId = getClientTrackingId();
+    const resolved = resolveTrafficSource(attribution.utm_source, attribution.utm_medium, attribution.referrer);
+
     const formData = new FormData();
     formData.append("name", name);
+    formData.append("email", email);
     formData.append("whatsapp", whatsapp);
     formData.append("city", city);
+    formData.append("state", state);
     formData.append("capital", capital);
     formData.append("profile", profile);
     formData.append("prazo", prazo);
     formData.append("conhecimento", conhecimento);
+    formData.append("event_id", eventId);
+    formData.append("utm_source", attribution.utm_source);
+    formData.append("utm_campaign", attribution.utm_campaign);
+    formData.append("utm_content", attribution.utm_content);
+    formData.append("utm_term", attribution.utm_term);
+    formData.append("traffic_source", resolved.source);
+    formData.append("traffic_medium", resolved.medium);
+    formData.append("gclid", attribution.gclid);
+    formData.append("fbclid", attribution.fbclid);
+    formData.append("wbraid", attribution.wbraid);
+    formData.append("gbraid", attribution.gbraid);
+    formData.append("msclkid", attribution.msclkid);
+    formData.append("page_url", attribution.page_url);
+    formData.append("client_tracking_id", clientTrackingId);
+
     const res = await submitCtaForm(formData);
     if (res.success) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "lead_form_submit_success",
+        event_id: eventId,
+        lead_id: res.leadId || "",
+        form_id: "lp_investidores_form",
+        form_name: "lp_investidores",
+        lead_type: "franquia_investidor",
+        business_unit: "b2b_franquias",
+        conversion_identifier: "LP Investidores OdontoCompany",
+        rd_status: "success",
+        capital_investimento: capital,
+        perfil_investidor: profile,
+        prazo_abertura_clinica: prazo,
+        conhece_odontocompany: conhecimento,
+        utm_source: attribution.utm_source,
+        utm_medium: attribution.utm_medium,
+        utm_campaign: attribution.utm_campaign,
+        utm_content: attribution.utm_content,
+        utm_term: attribution.utm_term,
+        gclid: attribution.gclid,
+        fbclid: attribution.fbclid,
+        wbraid: attribution.wbraid,
+        gbraid: attribution.gbraid,
+        msclkid: attribution.msclkid,
+      });
       setSuccess(true);
+    } else {
+      setErrorMessage(res.message || "Não foi possível enviar seu cadastro. Tente novamente.");
     }
     setLoading(false);
   };
@@ -133,20 +221,34 @@ export default function CtaFunnel({ light = false }: { light?: boolean }) {
               </div>
               <div className="form-group">
                 <label className="form-label flex items-center gap-2">
+                  <Mail className="w-4 h-4" /> E-mail
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="form-input"
+                  placeholder="seu@email.com"
+                  style={!emailValid ? { borderColor: "#c0392b" } : undefined}
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label flex items-center gap-2">
                   <Phone className="w-4 h-4" /> WhatsApp com DDD
                 </label>
                 <input
                   type="tel"
                   inputMode="tel"
                   value={whatsapp}
-                  onChange={(e) => setWhatsapp(e.target.value)}
+                  onChange={(e) => setWhatsapp(formatPhone(e.target.value))}
                   className="form-input"
                   placeholder="(00) 00000-0000"
+                  style={!phoneValid ? { borderColor: "#c0392b" } : undefined}
                 />
               </div>
               <button
                 onClick={handleNext}
-                disabled={!name || !whatsapp}
+                disabled={!name || !isValidEmail(email) || phoneDigits < 10}
                 className="form-submit flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 Próximo <ChevronRight className="w-4 h-4" />
@@ -171,9 +273,31 @@ export default function CtaFunnel({ light = false }: { light?: boolean }) {
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                   className="form-input"
-                  placeholder="Ex: Maringá - PR"
+                  placeholder="Ex: Maringá"
                   autoFocus
                 />
+              </div>
+              <div className="form-group">
+                <label className="form-label flex items-center gap-2">
+                  <MapPin className="w-4 h-4" /> Estado (UF)
+                </label>
+                <div className="relative">
+                  <select
+                    value={state}
+                    onChange={(e) => setStateUf(e.target.value)}
+                    className="form-input select-dark appearance-none w-full"
+                  >
+                    <option value="" disabled>
+                      Selecione o estado
+                    </option>
+                    {BRAZIL_STATES.map((uf) => (
+                      <option key={uf} value={uf}>
+                        {uf}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronRight className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 rotate-90 pointer-events-none" />
+                </div>
               </div>
               <div className="flex gap-2">
                 <button
@@ -184,7 +308,7 @@ export default function CtaFunnel({ light = false }: { light?: boolean }) {
                 </button>
                 <button
                   onClick={handleNext}
-                  disabled={!city}
+                  disabled={!city || !state}
                   className="form-submit flex items-center justify-center gap-2 flex-1 disabled:opacity-50"
                 >
                   Próximo <ChevronRight className="w-4 h-4" />
@@ -359,6 +483,11 @@ export default function CtaFunnel({ light = false }: { light?: boolean }) {
                   <ChevronRight className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 rotate-90 pointer-events-none" />
                 </div>
               </div>
+              {errorMessage && (
+                <p className="text-sm text-center" style={{ color: "#e57373" }}>
+                  {errorMessage}
+                </p>
+              )}
               <div className="flex gap-2">
                 <button
                   onClick={() => setStep(5)}
